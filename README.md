@@ -1,2 +1,3 @@
-# LibreLabUNSL
-Kit educativo de ciencia para experimentos en el aula, basado en Arduino.
+# Repositorio de código para experiencias
+
+# 👉️👉️ Pedir permisos de edición! 
