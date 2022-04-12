@@ -1,6 +1,5 @@
 #include <elapsedMillis.h>
 #include "QList.h"
-#include <Statistical.h>
 
 
 elapsedMillis timeElapsed;
@@ -10,7 +9,7 @@ const int nMedidas = 200;
 int listaMedidas[nMedidas] = {};
 float suma = 0;
 int nOutliers = nMedidas/20;   //// Esto va a haber que ajustarlo para q sea un % < a mayor nMedidas
-
+float media;
 
 void sort(int a[], int size) {          // Función de ordenamiento tipo Bubble
     for(int i=0; i<(size-1); i++) {
@@ -32,12 +31,12 @@ void setup(){
   timeElapsed = 0;
 }
 
-float calcularSD(float data[], int tamanio) {    // FUNCIÓN DEVIACIÓN ESTANDAR
+float calcularSD(float data[], int tamanio, float media) {    // FUNCIÓN DEVIACIÓN ESTANDAR
   float standardDeviation = 0.0;
   int i;
 
   for(i = 0; i < tamanio; ++i) {
-    standardDeviation += pow(data[i] - mean, 2);
+    standardDeviation += pow(data[i] - media, 2);
   }
 
   return sqrt(standardDeviation / tamanio);
@@ -87,6 +86,14 @@ for(i =1; i < nOutliers; i++){   // Sacamos ultimos outliers
   listaSmart.pop_back();
 }
 
+
+float listaLimpia[listaSmart.size()] = {};           // Volvemos a lista normal
+for(i =1; i <= listaSmart.size(); i++){                
+  listaLimpia[i] = listaSmart.at(i);
+}
+int tamanio = listaSmart.size();
+
+
 /*
 Serial.println("Ordenadas y sin outliers: ");
 for(i =1; i <= listaSmart.size(); i++){  
@@ -100,12 +107,13 @@ for(i =1; i <= listaSmart.size(); i++){
 }
 
 Serial.print("Media: ");
-Serial.println(suma/listaSmart.size());
+media = suma/listaSmart.size();
+Serial.println(media);
 
 
 // DEVIACIÓN ESTANDAR
 Serial.print("Incerteza: ");
-Serial.println(calcularSD(listaSmart, listaSmart.size()));
+Serial.println(calcularSD(listaLimpia, tamanio, media));
 
 
 //while(1){};
