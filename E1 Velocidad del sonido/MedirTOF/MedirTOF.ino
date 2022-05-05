@@ -5,11 +5,11 @@
 elapsedMillis timeElapsed;
 int i;
 int medida;
-const int nMedidas = 200;
+const int nMedidas = 100;
 int listaMedidas[nMedidas] = {};
-float suma = 0;
-int nOutliers = nMedidas/20;   //// Esto va a haber que ajustarlo para q sea un % < a mayor nMedidas
-float media;
+float suma = 0.0;
+int nOutliers = nMedidas/15;   //// Esto va a haber que ajustarlo para q sea un % < a mayor nMedidas
+
 
 void sort(int a[], int size) {          // Función de ordenamiento tipo Bubble
     for(int i=0; i<(size-1); i++) {
@@ -31,39 +31,30 @@ void setup(){
   timeElapsed = 0;
 }
 
-float calcularSD(float data[], int tamanio, float media) {    // FUNCIÓN DEVIACIÓN ESTANDAR
-  float standardDeviation = 0.0;
-  int i;
-
-  for(i = 0; i < tamanio; ++i) {
-    standardDeviation += pow(data[i] - media, 2);
-  }
-
-  return sqrt(standardDeviation / tamanio);
-}
 
 
 
 
 void loop(){
+
  for(i =1; i <= nMedidas; i++){     // Cuántas mediciones queremos promediar
-  digitalWrite(9, LOW); //Set trigger pin low
-  delayMicroseconds(2000); //Let signal settle
-  digitalWrite(9, HIGH); //Set trigPin high
-  delayMicroseconds(10); //Delay in high state
-  digitalWrite(9, LOW); //ping has now been sent
+  digitalWrite(9,LOW); /* Por cuestión de estabilización del sensor*/
+  delayMicroseconds(10);
+  
+  digitalWrite(9, HIGH); /* envío del pulso ultrasónico*/
+  delayMicroseconds(10);
+  
   
   medida = pulseIn(8, HIGH); /* Función para medir la longitud del pulso entrante.
   Mide el tiempo que transcurrido entre el envío del pulso ultrasónico y cuando el
   sensor recibe el rebote, es decir: desde que el pin 8 empieza a recibir el rebote,
   HIGH, hasta que deja de hacerlo, LOW, la longitud del pulso entrante*/
   
-  
   listaMedidas[i] = medida;   // Agregamos medida individual a la lista de medidas
   
   //Serial.println(medida);   // Nos muestra las medidas individuales
 
-  delay(0);
+  delay(10);
 }
 
 sort(listaMedidas,nMedidas);   // Ordenamos lista 
@@ -86,14 +77,6 @@ for(i =1; i < nOutliers; i++){   // Sacamos ultimos outliers
   listaSmart.pop_back();
 }
 
-
-float listaLimpia[listaSmart.size()] = {};           // Volvemos a lista normal
-for(i =1; i <= listaSmart.size(); i++){                
-  listaLimpia[i] = listaSmart.at(i);
-}
-int tamanio = listaSmart.size();
-
-
 /*
 Serial.println("Ordenadas y sin outliers: ");
 for(i =1; i <= listaSmart.size(); i++){  
@@ -105,19 +88,19 @@ for(i =1; i <= listaSmart.size(); i++){
 for(i =1; i <= listaSmart.size(); i++){  
   suma += listaSmart.at(i);
 }
+float tof = suma/listaSmart.size()/2000000;
 
-Serial.print("Media: ");
-media = suma/listaSmart.size();
-Serial.println(media);
+//Serial.print("Media: ");
+Serial.print(tof,8);
+Serial.print(",");
+Serial.println(0.16/tof,8);
+suma=0;
 
-
-// DEVIACIÓN ESTANDAR
-Serial.print("Incerteza: ");
-Serial.println(calcularSD(listaLimpia, tamanio, media));
 
 
 //while(1){};
-suma=0;
+
+
   
 }
   
