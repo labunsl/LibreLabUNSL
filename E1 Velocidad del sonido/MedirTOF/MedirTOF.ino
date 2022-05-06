@@ -54,7 +54,7 @@ void loop(){
   
   //Serial.println(medida);   // Nos muestra las medidas individuales
 
-  delay(10);
+  delay(30);
 }
 
 sort(listaMedidas,nMedidas);   // Ordenamos lista 
@@ -93,7 +93,7 @@ float tof = suma/listaSmart.size()/2000000;
 //Serial.print("Media: ");
 Serial.print(tof,8);
 Serial.print(",");
-Serial.println(0.16/tof,8);
+Serial.println(2/tof,8);
 suma=0;
 
 
