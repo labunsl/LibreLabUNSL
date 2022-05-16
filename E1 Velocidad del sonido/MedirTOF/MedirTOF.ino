@@ -1,5 +1,8 @@
 #include <elapsedMillis.h>
 #include "QList.h"
+#include <Adafruit_AHT10.h>
+
+Adafruit_AHT10 aht;
 
 
 elapsedMillis timeElapsed;
@@ -29,6 +32,11 @@ void setup(){
   pinMode(9, OUTPUT); /*activación del pin 9 como salida: para el pulso ultrasónico*/
   pinMode(8, INPUT); /*activación del pin 8 como entrada: tiempo del rebote del ultrasonido*/
   timeElapsed = 0;
+  if (! aht.begin()) {
+    Serial.println("Could not find AHT10? Check wiring");
+    while (1) delay(10);
+  }
+  //Serial.println("TOF,Distancia,Temp,Humed");
 }
 
 
@@ -53,6 +61,7 @@ void loop(){
   listaMedidas[i] = medida;   // Agregamos medida individual a la lista de medidas
   
   //Serial.println(medida);   // Nos muestra las medidas individuales
+ 
 
   delay(30);
 }
@@ -90,10 +99,17 @@ for(i =1; i <= listaSmart.size(); i++){
 }
 float tof = suma/listaSmart.size()/2000000;
 
+sensors_event_t humidity, temp;
+aht.getEvent(&humidity, &temp);  //Leer sensor Temp y humedad
+
 //Serial.print("Media: ");
 Serial.print(tof,8);
 Serial.print(",");
-Serial.println(2/tof,8);
+Serial.print(1);  //distancia
+Serial.print(",");
+Serial.print(temp.temperature);
+Serial.print(",");
+Serial.println(humidity.relative_humidity);
 suma=0;
 
 
@@ -101,6 +117,6 @@ suma=0;
 //while(1){};
 
 
-  
+delay(5000);
 }
   
