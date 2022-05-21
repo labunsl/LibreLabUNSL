@@ -8,10 +8,10 @@ Adafruit_AHT10 aht;
 elapsedMillis timeElapsed;
 int i;
 int medida;
-const int nMedidas = 100;
+const int nMedidas = 9;
 int listaMedidas[nMedidas] = {};
 float suma = 0.0;
-int nOutliers = nMedidas/15;   //// Esto va a haber que ajustarlo para q sea un % < a mayor nMedidas
+int nOutliers = 2;   //// Esto va a haber que ajustarlo para q sea un % < a mayor nMedidas
 
 
 void sort(int a[], int size) {          // Función de ordenamiento tipo Bubble
@@ -45,6 +45,7 @@ void setup(){
 
 void loop(){
 
+
  for(i =1; i <= nMedidas; i++){     // Cuántas mediciones queremos promediar
   digitalWrite(9,LOW); /* Por cuestión de estabilización del sensor*/
   delayMicroseconds(10);
@@ -63,26 +64,28 @@ void loop(){
   //Serial.println(medida);   // Nos muestra las medidas individuales
  
 
-  delay(30);
+  delay(0);
 }
+
+
 
 sort(listaMedidas,nMedidas);   // Ordenamos lista 
 
 
 
 QList<int> listaSmart;      // Pasamos lista a Qlist
-for(i =1; i < nMedidas; i++){
+for(int i =1; i < nMedidas; i++){
   listaSmart.push_back(listaMedidas[i]);
 }
 
 
 
 
-for(i =1; i < nOutliers; i++){   // Sacamos primeros outliers
+for(int i =1; i < nOutliers; i++){   // Sacamos primeros outliers
   listaSmart.pop_front();
 }
  
-for(i =1; i < nOutliers; i++){   // Sacamos ultimos outliers
+for(int i =1; i < nOutliers; i++){   // Sacamos ultimos outliers
   listaSmart.pop_back();
 }
 
@@ -94,7 +97,7 @@ for(i =1; i <= listaSmart.size(); i++){
 */
 
 // CALCULEMOS MEDIA
-for(i =1; i <= listaSmart.size(); i++){  
+for(int i =1; i <= listaSmart.size(); i++){  
   suma += listaSmart.at(i);
 }
 float tof = suma/listaSmart.size()/2000000;
@@ -102,21 +105,18 @@ float tof = suma/listaSmart.size()/2000000;
 sensors_event_t humidity, temp;
 aht.getEvent(&humidity, &temp);  //Leer sensor Temp y humedad
 
-//Serial.print("Media: ");
-Serial.print(tof,8);
-Serial.print(",");
-Serial.print(1);  //distancia
-Serial.print(",");
-Serial.print(temp.temperature);
-Serial.print(",");
-Serial.println(humidity.relative_humidity);
+
+//Serial.print(tof,8);
+//Serial.print(",");
+//Serial.println(temp.temperature);
+Serial.println(343*tof,5);
+
+//Serial.println(humidity.relative_humidity);
 suma=0;
 
 
 
 //while(1){};
 
-
-delay(5000);
 }
   
