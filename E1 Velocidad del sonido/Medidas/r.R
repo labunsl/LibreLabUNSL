@@ -1,10 +1,7 @@
-library(DataEditR)
 
-datos <- read.csv("Documents/GitHub/LibreLabUNSL/E1 Velocidad del sonido/Medidas/data.csv")
+datos <- read.csv(file='/home/kiernan/Documents/GitHub/LibreLabUNSL/E1 Velocidad del sonido/Medidas/data.csv')
 
 plot(datos$Distancia , datos$TOF)
-
-datosClean <- data_edit(datos)
 
 #### PLOTS ####
 # Distancia vs Vel Sonido, bruto

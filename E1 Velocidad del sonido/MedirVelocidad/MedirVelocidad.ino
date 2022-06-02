@@ -10,7 +10,7 @@ Adafruit_AHT10 aht;
 
 int i;
 int medida;
-float frecMuestreo = 15;   // Esto va a ser variable en la INTERFAZ  ========= La máxima es 30 para nMedidas=5
+float frecMuestreo = 30;   // Esto va a ser variable en la INTERFAZ  ========= La máxima es 30 para nMedidas=5
 const int nMedidas = 5;  
 int listaMedidas[nMedidas] = {};
 float suma, v, dAnt, vAnt = 0.0;
@@ -132,11 +132,11 @@ void loop() {
       
       Serial.print(timeElapsed/1000.0,7);
       Serial.print(",");
-      Serial.print(d,5);
-      Serial.print(",");
-      Serial.print(v,7);
-      Serial.print(",");
-      Serial.println(a,7);
+      Serial.println(d,5);
+      //Serial.print(",");
+      //Serial.print(v,7);
+      //Serial.print(",");
+      //Serial.println(a,7);
       dAnt=d;
       vAnt=v;
       tAnt=(long)tMedida;

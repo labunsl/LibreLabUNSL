@@ -2,6 +2,7 @@
 #include "QList.h"
 #include <Adafruit_AHT10.h>
 
+
 Adafruit_AHT10 aht;
 
 
