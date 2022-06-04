@@ -4,6 +4,8 @@
 
 ## Introducción
 
+completaaaaaaaaaaaar
+
 ## Observación
 
 **Pregunta Nº1: ¿Qué entendés por "velocidad del sonido"?**
@@ -21,6 +23,16 @@
 ## Materiales y métodos
 
 ** En métodos incluir las cuentas realizadas para calcular todo, y las consideraciones hechas para hacer el análisis de datos.**
+
+La **velocidad** de un objeto es la distancia que se recorre en un tiempo determinado.
+
+$$\Large v = \frac{x}{t}$$
+
+En el experimento, el "objeto" es la onda de sonido que viaja en el aire.
+
+El sensor ultrasónido emite una onda de sonido que viaja en el aire, esta choca con el objetivo y rebota, volviendo hacia el sensor.
+
+La onda ha recorrido **dos veces la distancia** que hay entre el sensor y el objetivo.
 
 ## Medición de la velocidad del sonido
 
