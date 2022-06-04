@@ -32,6 +32,8 @@ En el experimento, el "objeto" es la onda de sonido que viaja en el aire.
 
 El sensor ultrasónido emite una onda de sonido que viaja en el aire, esta choca con el objetivo y rebota, volviendo hacia el sensor.
 
+![test](test.jpg)
+
 La onda ha recorrido **dos veces la distancia** que hay entre el sensor y el objetivo.
 
 ## Medición de la velocidad del sonido
