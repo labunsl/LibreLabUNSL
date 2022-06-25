@@ -1,6 +1,6 @@
 ![Logo](/Miscelánea/logo.png)
 
-# LibreLab UNSL
+# LibreLab UNSL - Repositorio de archivos
 
 Sitio web: [LabUNSL.github.io](https://labunsl.github.io/)
 
