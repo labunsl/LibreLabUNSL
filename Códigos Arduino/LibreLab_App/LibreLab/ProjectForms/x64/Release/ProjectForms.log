@@ -1,0 +1,156 @@
+﻿  Exportar.cpp
+  PlanoXY.cpp
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(35,34): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(64,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(65,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(144,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(146,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(149,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(156,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(158,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(161,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'unsigned __int64'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(239,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(240,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(241,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(242,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(256,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(257,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(341,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(342,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(359,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(364,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(471,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(474,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  SubMenuArduino.cpp
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(417,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(418,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(435,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(483,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(484,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(489,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(490,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(491,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(492,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(493,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(494,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(495,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(496,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(500,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(503,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(506,16): warning C4477: 'sprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(507,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(509,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(506,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(531,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(532,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(537,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(538,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(539,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(540,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(541,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(542,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(543,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(544,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(548,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(551,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(554,16): warning C4477: 'sprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(555,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(557,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(554,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  SubMenuExportar.cpp
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(35,34): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(64,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(65,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(144,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(146,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(149,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(156,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(158,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(161,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'unsigned __int64'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(239,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(240,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(241,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(242,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(256,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(257,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(341,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(342,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(359,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(364,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(471,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(474,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  VentanaPrincipal.cpp
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(417,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(418,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(435,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(483,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(484,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(489,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(490,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(491,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(492,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(493,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(494,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(495,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(496,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(500,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(503,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(506,16): warning C4477: 'sprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(507,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(509,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(506,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(531,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(532,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(537,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(538,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(539,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(540,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(541,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(542,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(543,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(544,11): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(548,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(551,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(554,16): warning C4477: 'sprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(555,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(557,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SubMenuArduino.h(554,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(35,34): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(64,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(65,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(144,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(146,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(149,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(156,57): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(158,48): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(161,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'double'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'unsigned __int64'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(202,11): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(239,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(240,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(241,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(242,41): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(256,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(257,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(341,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(342,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(359,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(364,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(471,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\PlanoXY.h(474,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\VentanaPrincipal.h(494,21): warning C4477: 'sprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\VentanaPrincipal.h(494,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\VentanaPrincipal.h(604,39): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\VentanaPrincipal.h(606,13): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 2 tiene el tipo 'System::String ^'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\VentanaPrincipal.cpp(7,32): warning C4829: Parámetros posiblemente incorrectos para la función main. Utilice 'int main(Platform::Array<Platform::String^>^ argv)'
+  SerialClass.cpp
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SerialClass.cpp(16,21): error C2664: 'HANDLE CreateFileW(LPCWSTR,DWORD,DWORD,LPSECURITY_ATTRIBUTES,DWORD,DWORD,HANDLE)': el argumento 1 no puede convertirse de 'char *' a 'LPCWSTR'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SerialClass.cpp(16,32): message : Los tipos señalados no están relacionados; la conversión requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\fileapi.h(94,1): message : vea la declaración de 'CreateFileW'
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\SerialClass.cpp(157,29): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generando código...
