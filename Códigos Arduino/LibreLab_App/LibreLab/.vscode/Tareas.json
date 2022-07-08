@@ -1,0 +1,15 @@
+{  
+    "versión" :  "2.0.0" ,  
+    "tareas" : [  
+        {  
+            "etiqueta" :  "construir" ,  
+            "comando" :  "dotnet" ,  
+            "tipo" :  "proceso" ,  
+            "argumentos" : [  "construir"  ],  
+            "opciones" : {  
+                "cwd" :  "${carpeta del espacio de trabajo}"  
+            },  
+            "coincidencia de problemas" :  "$tsc"  
+        }  
+    ]  
+}
