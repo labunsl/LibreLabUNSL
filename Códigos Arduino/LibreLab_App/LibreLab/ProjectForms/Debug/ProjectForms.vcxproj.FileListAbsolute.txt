@@ -1,2 +1,0 @@
-C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\Debug\ProjectForms.MyForm.resources
-C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\Debug\ProjectForms.vcxproj.GenerateResource.cache

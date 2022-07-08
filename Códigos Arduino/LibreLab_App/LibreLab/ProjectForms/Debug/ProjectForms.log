@@ -1,7 +1,0 @@
-﻿  MyForm.cpp
-C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\MyForm.cpp(8,1): warning C4829: Parámetros posiblemente incorrectos para la función main. Utilice 'int main(Platform::Array<Platform::String^>^ argv)'
-  SerialClass.cpp
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
-  Generando código...
-  MyForm.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
-  ProjectForms.vcxproj -> C:\Users\Len-Nico\source\repos\ProjectForms\Debug\ProjectForms.exe
