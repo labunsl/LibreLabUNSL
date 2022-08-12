@@ -258,9 +258,9 @@ namespace ProjectForms {
 			// comboBoxS1
 			// 
 			this->comboBoxS1->FormattingEnabled = true;
-			this->comboBoxS1->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
+			this->comboBoxS1->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
 				L"Ninguno", L"Id0 - max6675 - Temperatura", L"Id1 - bmp180 - Temperatura",
-					L"Id2 - bmp180 - Presion", L"Id3 - ds18b20 - Temperatura", L"Id4 - dht11 - Temperatura", L"Id5 - dht11 - Humedad", L"Id6 - HX710 - Presion manguera"
+					L"Id2 - bmp180 - Presión", L"Id3 - ds18b20 - Temperatura", L"Id4 - dht11 - Temperatura", L"Id5 - dht11 - Humedad", L"Id6 - HX710 - Presión manguera", L"Id7 - HCSR04 - Posición ultrasónico"
 			});
 			this->comboBoxS1->Location = System::Drawing::Point(76, 28);
 			this->comboBoxS1->Name = L"comboBoxS1";
@@ -357,9 +357,9 @@ namespace ProjectForms {
 			// comboBoxS2
 			// 
 			this->comboBoxS2->FormattingEnabled = true;
-			this->comboBoxS2->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
+			this->comboBoxS2->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
 				L"Ninguno", L"Id0 - max6675 - Temperatura", L"Id1 - bmp180 - Temperatura",
-					L"Id2 - bmp180 - Presion", L"Id3 - ds18b20 - Temperatura", L"Id4 - dht11 - Temperatura", L"Id5 - dht11 - Humedad", L"Id6 - HX710 - Presion manguera"
+					L"Id2 - bmp180 - Presion", L"Id3 - ds18b20 - Temperatura", L"Id4 - dht11 - Temperatura", L"Id5 - dht11 - Humedad", L"Id6 - HX710 - Presion manguera", L"Id7 - HCSR04 - Posición ultrasónico"
 			});
 			this->comboBoxS2->Location = System::Drawing::Point(77, 33);
 			this->comboBoxS2->Name = L"comboBoxS2";
@@ -542,6 +542,7 @@ private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^
 		case 6: strcat(mjs, "5,"); break;
 		case 7: strcat(mjs, "6,"); break;
 		case 8: strcat(mjs, "7,"); break;
+		case 9: strcat(mjs, "8,"); break;
 		}
 
 		if (this->rb2Man->Checked) {
