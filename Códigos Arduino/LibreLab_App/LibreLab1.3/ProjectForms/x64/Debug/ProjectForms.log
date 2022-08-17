@@ -1,0 +1,1 @@
+﻿C:\Program Files\dotnet\sdk\6.0.301\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets(92,5): error NETSDK1013: El valor de TargetFramework "" no se reconoció. Puede que esté mal escrito. Si este no es el caso, las propiedades TargetFrameworkIdentifier o TargetFrameworkVersion se deben especificar explícitamente.
