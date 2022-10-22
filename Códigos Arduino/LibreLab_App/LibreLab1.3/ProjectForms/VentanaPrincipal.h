@@ -33,6 +33,8 @@ namespace ProjectForms {
 		Point clicIni, clicFin, tamResolucion, planoRes, planoPos;
 		System::String^ entrada;
 
+		int numGraficaClic;
+
 
 
 	private: System::Windows::Forms::GroupBox^ groupBox3;
@@ -40,10 +42,11 @@ namespace ProjectForms {
 	private: System::Windows::Forms::CheckBox^ checkGrilla;
 	private: System::Windows::Forms::CheckBox^ checkAutoAjuste;
 	private: System::Windows::Forms::CheckBox^ checkLineas;
-	private: System::Windows::Forms::CheckBox^ checkBoxBarras;
+
 	private: System::Windows::Forms::ComboBox^ cbPuertos;
 	private: System::Windows::Forms::ToolStripMenuItem^ exportarToolStripMenuItem;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ butLimpiar;
+
 
 	private: SubMenuTablas^ subMenuTablas;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
@@ -62,6 +65,8 @@ namespace ProjectForms {
 
 	private: System::Windows::Forms::Label^ labS1;
 	private: System::Windows::Forms::Label^ labS2;
+	private: System::Windows::Forms::CheckBox^ checkS1TablaAuto;
+	private: System::Windows::Forms::CheckBox^ checkS2TablaAuto;
 
 
 
@@ -118,7 +123,7 @@ namespace ProjectForms {
 	private: System::Windows::Forms::Button^ bConectar;
 	protected:
 
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::TextBox^ tbInfo;
 
 	private: System::Windows::Forms::Label^ label2;
@@ -157,8 +162,9 @@ namespace ProjectForms {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->bConectar = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tbInfo = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
@@ -178,12 +184,11 @@ namespace ProjectForms {
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->checkBoxBarras = (gcnew System::Windows::Forms::CheckBox());
 			this->checkGrilla = (gcnew System::Windows::Forms::CheckBox());
 			this->checkAutoAjuste = (gcnew System::Windows::Forms::CheckBox());
 			this->checkLineas = (gcnew System::Windows::Forms::CheckBox());
 			this->checkPuntos = (gcnew System::Windows::Forms::CheckBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->butLimpiar = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Tiempo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Dato = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -197,6 +202,8 @@ namespace ProjectForms {
 			this->butDetener = (gcnew System::Windows::Forms::Button());
 			this->labS1 = (gcnew System::Windows::Forms::Label());
 			this->labS2 = (gcnew System::Windows::Forms::Label());
+			this->checkS1TablaAuto = (gcnew System::Windows::Forms::CheckBox());
+			this->checkS2TablaAuto = (gcnew System::Windows::Forms::CheckBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
@@ -207,42 +214,38 @@ namespace ProjectForms {
 			// 
 			// bConectar
 			// 
-			this->bConectar->Location = System::Drawing::Point(11, 48);
+			this->bConectar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->bConectar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->bConectar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bConectar->ForeColor = System::Drawing::Color::Black;
+			this->bConectar->Location = System::Drawing::Point(8, 37);
 			this->bConectar->Margin = System::Windows::Forms::Padding(4);
 			this->bConectar->Name = L"bConectar";
-			this->bConectar->Size = System::Drawing::Size(165, 36);
+			this->bConectar->Size = System::Drawing::Size(82, 82);
 			this->bConectar->TabIndex = 0;
 			this->bConectar->Text = L"Conectar";
+			this->bConectar->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->bConectar->UseVisualStyleBackColor = true;
 			this->bConectar->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(8, 24);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(66, 20);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"Estado:";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
-			// 
 			// tbInfo
 			// 
-			this->tbInfo->Location = System::Drawing::Point(11, 133);
+			this->tbInfo->Location = System::Drawing::Point(6, 152);
 			this->tbInfo->Margin = System::Windows::Forms::Padding(4);
 			this->tbInfo->Name = L"tbInfo";
-			this->tbInfo->Size = System::Drawing::Size(165, 27);
+			this->tbInfo->ReadOnly = true;
+			this->tbInfo->Size = System::Drawing::Size(185, 30);
 			this->tbInfo->TabIndex = 2;
 			this->tbInfo->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(72, 24);
+			this->label2->Location = System::Drawing::Point(8, 123);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(151, 20);
+			this->label2->Size = System::Drawing::Size(183, 25);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"DESCONECTADO";
 			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
@@ -253,12 +256,13 @@ namespace ProjectForms {
 			this->groupBox1->Controls->Add(this->bConectar);
 			this->groupBox1->Controls->Add(this->tbInfo);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->label1);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->groupBox1->Location = System::Drawing::Point(19, 43);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
-			this->groupBox1->Size = System::Drawing::Size(214, 185);
+			this->groupBox1->Size = System::Drawing::Size(214, 193);
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Conexión";
@@ -271,9 +275,9 @@ namespace ProjectForms {
 				L"COM1", L"COM2", L"COM3", L"COM4", L"COM5", L"COM6",
 					L"COM7", L"COM8", L"COM9", L"COM10"
 			});
-			this->cbPuertos->Location = System::Drawing::Point(11, 91);
+			this->cbPuertos->Location = System::Drawing::Point(97, 63);
 			this->cbPuertos->Name = L"cbPuertos";
-			this->cbPuertos->Size = System::Drawing::Size(121, 28);
+			this->cbPuertos->Size = System::Drawing::Size(99, 33);
 			this->cbPuertos->TabIndex = 0;
 			this->cbPuertos->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
 			// 
@@ -286,7 +290,7 @@ namespace ProjectForms {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1350, 28);
+			this->menuStrip1->Size = System::Drawing::Size(1350, 31);
 			this->menuStrip1->TabIndex = 10;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -296,70 +300,78 @@ namespace ProjectForms {
 				this->nuevoToolStripMenuItem,
 					this->exportarToolStripMenuItem, this->salirToolStripMenuItem
 			});
+			this->archivoToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 24);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(81, 27);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// nuevoToolStripMenuItem
 			// 
 			this->nuevoToolStripMenuItem->Name = L"nuevoToolStripMenuItem";
-			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(148, 26);
+			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(158, 28);
 			this->nuevoToolStripMenuItem->Text = L"Nuevo";
 			// 
 			// exportarToolStripMenuItem
 			// 
 			this->exportarToolStripMenuItem->Name = L"exportarToolStripMenuItem";
-			this->exportarToolStripMenuItem->Size = System::Drawing::Size(148, 26);
+			this->exportarToolStripMenuItem->Size = System::Drawing::Size(158, 28);
 			this->exportarToolStripMenuItem->Text = L"Exportar";
 			this->exportarToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportarToolStripMenuItem_Click);
 			// 
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(148, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(158, 28);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::salirToolStripMenuItem_Click);
 			// 
 			// edicionToolStripMenuItem
 			// 
 			this->edicionToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ajustesToolStripMenuItem });
+			this->edicionToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->edicionToolStripMenuItem->Name = L"edicionToolStripMenuItem";
-			this->edicionToolStripMenuItem->Size = System::Drawing::Size(72, 24);
+			this->edicionToolStripMenuItem->Size = System::Drawing::Size(79, 27);
 			this->edicionToolStripMenuItem->Text = L"Edición";
 			// 
 			// ajustesToolStripMenuItem
 			// 
 			this->ajustesToolStripMenuItem->Name = L"ajustesToolStripMenuItem";
-			this->ajustesToolStripMenuItem->Size = System::Drawing::Size(150, 26);
+			this->ajustesToolStripMenuItem->Size = System::Drawing::Size(161, 28);
 			this->ajustesToolStripMenuItem->Text = L"Sensores";
 			this->ajustesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ajustesToolStripMenuItem_Click);
 			// 
 			// ventanaToolStripMenuItem
 			// 
 			this->ventanaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->preferenciasToolStripMenuItem });
+			this->ventanaToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->ventanaToolStripMenuItem->Name = L"ventanaToolStripMenuItem";
-			this->ventanaToolStripMenuItem->Size = System::Drawing::Size(76, 24);
+			this->ventanaToolStripMenuItem->Size = System::Drawing::Size(87, 27);
 			this->ventanaToolStripMenuItem->Text = L"Ventana";
 			this->ventanaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ventanaToolStripMenuItem_Click);
 			// 
 			// preferenciasToolStripMenuItem
 			// 
 			this->preferenciasToolStripMenuItem->Name = L"preferenciasToolStripMenuItem";
-			this->preferenciasToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->preferenciasToolStripMenuItem->Size = System::Drawing::Size(186, 28);
 			this->preferenciasToolStripMenuItem->Text = L"Preferencias";
 			// 
 			// ayudaToolStripMenuItem
 			// 
 			this->ayudaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->acercaDeLibreLabToolStripMenuItem });
+			this->ayudaToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
-			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
+			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(72, 27);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
 			this->ayudaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ayudaToolStripMenuItem_Click);
 			// 
 			// acercaDeLibreLabToolStripMenuItem
 			// 
 			this->acercaDeLibreLabToolStripMenuItem->Name = L"acercaDeLibreLabToolStripMenuItem";
-			this->acercaDeLibreLabToolStripMenuItem->Size = System::Drawing::Size(223, 26);
+			this->acercaDeLibreLabToolStripMenuItem->Size = System::Drawing::Size(243, 28);
 			this->acercaDeLibreLabToolStripMenuItem->Text = L"Acerca de LibreLab ";
 			// 
 			// statusStrip1
@@ -387,37 +399,27 @@ namespace ProjectForms {
 			// 
 			// groupBox3
 			// 
-			this->groupBox3->Controls->Add(this->checkBoxBarras);
 			this->groupBox3->Controls->Add(this->checkGrilla);
 			this->groupBox3->Controls->Add(this->checkAutoAjuste);
 			this->groupBox3->Controls->Add(this->checkLineas);
 			this->groupBox3->Controls->Add(this->checkPuntos);
-			this->groupBox3->Location = System::Drawing::Point(19, 462);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox3->Location = System::Drawing::Point(19, 559);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(126, 187);
+			this->groupBox3->Size = System::Drawing::Size(214, 187);
 			this->groupBox3->TabIndex = 13;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Visualización";
-			// 
-			// checkBoxBarras
-			// 
-			this->checkBoxBarras->AutoSize = true;
-			this->checkBoxBarras->Location = System::Drawing::Point(7, 77);
-			this->checkBoxBarras->Name = L"checkBoxBarras";
-			this->checkBoxBarras->Size = System::Drawing::Size(82, 24);
-			this->checkBoxBarras->TabIndex = 4;
-			this->checkBoxBarras->Text = L"Barras";
-			this->checkBoxBarras->UseVisualStyleBackColor = true;
-			this->checkBoxBarras->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged_1);
 			// 
 			// checkGrilla
 			// 
 			this->checkGrilla->AutoSize = true;
 			this->checkGrilla->Checked = true;
 			this->checkGrilla->CheckState = System::Windows::Forms::CheckState::Checked;
-			this->checkGrilla->Location = System::Drawing::Point(6, 128);
+			this->checkGrilla->Location = System::Drawing::Point(6, 109);
 			this->checkGrilla->Name = L"checkGrilla";
-			this->checkGrilla->Size = System::Drawing::Size(71, 24);
+			this->checkGrilla->Size = System::Drawing::Size(78, 29);
 			this->checkGrilla->TabIndex = 3;
 			this->checkGrilla->Text = L"Grilla";
 			this->checkGrilla->UseVisualStyleBackColor = true;
@@ -428,9 +430,9 @@ namespace ProjectForms {
 			this->checkAutoAjuste->AutoSize = true;
 			this->checkAutoAjuste->Checked = true;
 			this->checkAutoAjuste->CheckState = System::Windows::Forms::CheckState::Checked;
-			this->checkAutoAjuste->Location = System::Drawing::Point(7, 155);
+			this->checkAutoAjuste->Location = System::Drawing::Point(7, 136);
 			this->checkAutoAjuste->Name = L"checkAutoAjuste";
-			this->checkAutoAjuste->Size = System::Drawing::Size(117, 24);
+			this->checkAutoAjuste->Size = System::Drawing::Size(135, 29);
 			this->checkAutoAjuste->TabIndex = 2;
 			this->checkAutoAjuste->Text = L"Auto Ajuste";
 			this->checkAutoAjuste->UseVisualStyleBackColor = true;
@@ -441,9 +443,9 @@ namespace ProjectForms {
 			this->checkLineas->AutoSize = true;
 			this->checkLineas->Checked = true;
 			this->checkLineas->CheckState = System::Windows::Forms::CheckState::Checked;
-			this->checkLineas->Location = System::Drawing::Point(7, 50);
+			this->checkLineas->Location = System::Drawing::Point(7, 68);
 			this->checkLineas->Name = L"checkLineas";
-			this->checkLineas->Size = System::Drawing::Size(81, 24);
+			this->checkLineas->Size = System::Drawing::Size(92, 29);
 			this->checkLineas->TabIndex = 1;
 			this->checkLineas->Text = L"Lineas";
 			this->checkLineas->UseVisualStyleBackColor = true;
@@ -454,47 +456,66 @@ namespace ProjectForms {
 			this->checkPuntos->AutoSize = true;
 			this->checkPuntos->Checked = true;
 			this->checkPuntos->CheckState = System::Windows::Forms::CheckState::Checked;
-			this->checkPuntos->Location = System::Drawing::Point(7, 23);
+			this->checkPuntos->Location = System::Drawing::Point(7, 41);
 			this->checkPuntos->Name = L"checkPuntos";
-			this->checkPuntos->Size = System::Drawing::Size(83, 24);
+			this->checkPuntos->Size = System::Drawing::Size(95, 29);
 			this->checkPuntos->TabIndex = 0;
 			this->checkPuntos->Text = L"Puntos";
 			this->checkPuntos->UseVisualStyleBackColor = true;
 			this->checkPuntos->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 			// 
-			// button1
+			// butLimpiar
 			// 
-			this->button1->Location = System::Drawing::Point(19, 419);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(126, 36);
-			this->button1->TabIndex = 5;
-			this->button1->Text = L"Limpiar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+			this->butLimpiar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->butLimpiar->ForeColor = System::Drawing::Color::Black;
+			this->butLimpiar->Location = System::Drawing::Point(70, 463);
+			this->butLimpiar->Margin = System::Windows::Forms::Padding(4);
+			this->butLimpiar->Name = L"butLimpiar";
+			this->butLimpiar->Size = System::Drawing::Size(82, 82);
+			this->butLimpiar->TabIndex = 5;
+			this->butLimpiar->Text = L"Limpiar";
+			this->butLimpiar->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
+			this->butLimpiar->UseVisualStyleBackColor = true;
+			this->butLimpiar->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+			this->butLimpiar->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::button1_KeyUp);
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->Tiempo,
 					this->Dato
 			});
 			this->dataGridView1->Location = System::Drawing::Point(550, 80);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersVisible = false;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->dataGridView1->Size = System::Drawing::Size(200, 587);
 			this->dataGridView1->TabIndex = 15;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
 			// Tiempo
 			// 
 			this->Tiempo->HeaderText = L"Tiempo";
 			this->Tiempo->MinimumWidth = 6;
 			this->Tiempo->Name = L"Tiempo";
+			this->Tiempo->ReadOnly = true;
 			this->Tiempo->Width = 93;
 			// 
 			// Dato
@@ -502,6 +523,7 @@ namespace ProjectForms {
 			this->Dato->HeaderText = L"Dato";
 			this->Dato->MinimumWidth = 6;
 			this->Dato->Name = L"Dato";
+			this->Dato->ReadOnly = true;
 			this->Dato->Width = 74;
 			// 
 			// dataGridView2
@@ -509,6 +531,15 @@ namespace ProjectForms {
 			this->dataGridView2->AllowUserToDeleteRows = false;
 			this->dataGridView2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView2->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->dataGridViewTextBoxColumn1,
@@ -516,16 +547,20 @@ namespace ProjectForms {
 			});
 			this->dataGridView2->Location = System::Drawing::Point(772, 80);
 			this->dataGridView2->Name = L"dataGridView2";
+			this->dataGridView2->ReadOnly = true;
+			this->dataGridView2->RowHeadersVisible = false;
 			this->dataGridView2->RowHeadersWidth = 51;
 			this->dataGridView2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->dataGridView2->Size = System::Drawing::Size(200, 587);
 			this->dataGridView2->TabIndex = 16;
+			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView2_CellContentClick);
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"Tiempo";
 			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			this->dataGridViewTextBoxColumn1->ReadOnly = true;
 			this->dataGridViewTextBoxColumn1->Width = 93;
 			// 
 			// dataGridViewTextBoxColumn2
@@ -533,91 +568,143 @@ namespace ProjectForms {
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Dato";
 			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->ReadOnly = true;
 			this->dataGridViewTextBoxColumn2->Width = 74;
 			// 
 			// sen1LabNom
 			// 
 			this->sen1LabNom->AutoSize = true;
-			this->sen1LabNom->Location = System::Drawing::Point(547, 60);
+			this->sen1LabNom->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->sen1LabNom->Location = System::Drawing::Point(547, 53);
 			this->sen1LabNom->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sen1LabNom->Name = L"sen1LabNom";
-			this->sen1LabNom->Size = System::Drawing::Size(67, 20);
+			this->sen1LabNom->Size = System::Drawing::Size(26, 25);
 			this->sen1LabNom->TabIndex = 17;
-			this->sen1LabNom->Text = L"Sensor:";
+			this->sen1LabNom->Text = L"--";
 			// 
 			// sen2LabNom
 			// 
 			this->sen2LabNom->AutoSize = true;
-			this->sen2LabNom->Location = System::Drawing::Point(769, 60);
+			this->sen2LabNom->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->sen2LabNom->Location = System::Drawing::Point(769, 53);
 			this->sen2LabNom->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sen2LabNom->Name = L"sen2LabNom";
-			this->sen2LabNom->Size = System::Drawing::Size(67, 20);
+			this->sen2LabNom->Size = System::Drawing::Size(26, 25);
 			this->sen2LabNom->TabIndex = 18;
-			this->sen2LabNom->Text = L"Sensor:";
+			this->sen2LabNom->Text = L"--";
 			// 
 			// butComenzar
 			// 
+			this->butComenzar->AccessibleDescription = L"";
+			this->butComenzar->BackColor = System::Drawing::SystemColors::Window;
 			this->butComenzar->Enabled = false;
-			this->butComenzar->Location = System::Drawing::Point(17, 309);
+			this->butComenzar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->butComenzar->ForeColor = System::Drawing::Color::Black;
+			this->butComenzar->Location = System::Drawing::Point(31, 285);
 			this->butComenzar->Margin = System::Windows::Forms::Padding(4);
 			this->butComenzar->Name = L"butComenzar";
-			this->butComenzar->Size = System::Drawing::Size(105, 36);
+			this->butComenzar->Size = System::Drawing::Size(82, 82);
 			this->butComenzar->TabIndex = 19;
 			this->butComenzar->Text = L"Comenzar";
-			this->butComenzar->UseVisualStyleBackColor = true;
+			this->butComenzar->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
+			this->butComenzar->UseVisualStyleBackColor = false;
 			this->butComenzar->Click += gcnew System::EventHandler(this, &MyForm::buttonComenzar);
 			// 
 			// butMuestra
 			// 
 			this->butMuestra->Enabled = false;
-			this->butMuestra->Location = System::Drawing::Point(17, 353);
+			this->butMuestra->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->butMuestra->ForeColor = System::Drawing::Color::Black;
+			this->butMuestra->Location = System::Drawing::Point(31, 374);
 			this->butMuestra->Margin = System::Windows::Forms::Padding(4);
 			this->butMuestra->Name = L"butMuestra";
-			this->butMuestra->Size = System::Drawing::Size(105, 36);
+			this->butMuestra->Size = System::Drawing::Size(82, 82);
 			this->butMuestra->TabIndex = 20;
 			this->butMuestra->Text = L"Muestra";
+			this->butMuestra->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->butMuestra->UseVisualStyleBackColor = true;
 			this->butMuestra->Click += gcnew System::EventHandler(this, &MyForm::butMuestra_Click);
 			// 
 			// butDetener
 			// 
 			this->butDetener->Enabled = false;
-			this->butDetener->Location = System::Drawing::Point(130, 309);
+			this->butDetener->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->butDetener->ForeColor = System::Drawing::Color::Black;
+			this->butDetener->Location = System::Drawing::Point(123, 285);
 			this->butDetener->Margin = System::Windows::Forms::Padding(4);
 			this->butDetener->Name = L"butDetener";
-			this->butDetener->Size = System::Drawing::Size(103, 36);
+			this->butDetener->Size = System::Drawing::Size(82, 82);
 			this->butDetener->TabIndex = 21;
 			this->butDetener->Text = L"Detener";
+			this->butDetener->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->butDetener->UseVisualStyleBackColor = true;
 			this->butDetener->Click += gcnew System::EventHandler(this, &MyForm::butDetener_Click);
 			// 
 			// labS1
 			// 
 			this->labS1->AutoSize = true;
-			this->labS1->Location = System::Drawing::Point(21, 264);
+			this->labS1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labS1->Location = System::Drawing::Point(21, 239);
 			this->labS1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->labS1->Name = L"labS1";
-			this->labS1->Size = System::Drawing::Size(21, 20);
+			this->labS1->Size = System::Drawing::Size(26, 25);
 			this->labS1->TabIndex = 22;
 			this->labS1->Text = L"--";
+			this->labS1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->labS1->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// labS2
 			// 
 			this->labS2->AutoSize = true;
-			this->labS2->Location = System::Drawing::Point(22, 284);
+			this->labS2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labS2->Location = System::Drawing::Point(22, 261);
 			this->labS2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->labS2->Name = L"labS2";
-			this->labS2->Size = System::Drawing::Size(21, 20);
+			this->labS2->Size = System::Drawing::Size(26, 25);
 			this->labS2->TabIndex = 23;
 			this->labS2->Text = L"--";
+			this->labS2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// checkS1TablaAuto
+			// 
+			this->checkS1TablaAuto->AutoSize = true;
+			this->checkS1TablaAuto->Checked = true;
+			this->checkS1TablaAuto->CheckState = System::Windows::Forms::CheckState::Checked;
+			this->checkS1TablaAuto->Location = System::Drawing::Point(552, 673);
+			this->checkS1TablaAuto->Name = L"checkS1TablaAuto";
+			this->checkS1TablaAuto->Size = System::Drawing::Size(148, 24);
+			this->checkS1TablaAuto->TabIndex = 24;
+			this->checkS1TablaAuto->Text = L"Mostrar últimos";
+			this->checkS1TablaAuto->UseVisualStyleBackColor = true;
+			// 
+			// checkS2TablaAuto
+			// 
+			this->checkS2TablaAuto->AutoSize = true;
+			this->checkS2TablaAuto->Checked = true;
+			this->checkS2TablaAuto->CheckState = System::Windows::Forms::CheckState::Checked;
+			this->checkS2TablaAuto->Location = System::Drawing::Point(774, 673);
+			this->checkS2TablaAuto->Name = L"checkS2TablaAuto";
+			this->checkS2TablaAuto->Size = System::Drawing::Size(148, 24);
+			this->checkS2TablaAuto->TabIndex = 25;
+			this->checkS2TablaAuto->Text = L"Mostrar últimos";
+			this->checkS2TablaAuto->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::WindowFrame;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(232)), static_cast<System::Int32>(static_cast<System::Byte>(223)),
+				static_cast<System::Int32>(static_cast<System::Byte>(226)));
 			this->ClientSize = System::Drawing::Size(1350, 729);
+			this->Controls->Add(this->checkS2TablaAuto);
+			this->Controls->Add(this->checkS1TablaAuto);
 			this->Controls->Add(this->labS2);
 			this->Controls->Add(this->labS1);
 			this->Controls->Add(this->butDetener);
@@ -627,7 +714,7 @@ namespace ProjectForms {
 			this->Controls->Add(this->sen1LabNom);
 			this->Controls->Add(this->dataGridView2);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->butLimpiar);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->groupBox1);
@@ -667,22 +754,32 @@ namespace ProjectForms {
 			if (arduino->estaConectado()) {
 				arduino->~Serial();
 				this->label2->Text = L"DESCONECTADO";
-				this->bConectar->Text = "Conectar";
+				//this->bConectar->Text = "Conectar";
+				statusStrip1->BackColor = Color::Gray;
 			}else {
 				char puerto[7];
 				sprintf(puerto, "%s", this->cbPuertos->SelectedItem->ToString());
 				//printf("	puerto %s\n",puerto);
 				if (arduino->conectar(puerto)) {
 					this->label2->Text = L"CONECTADO";
-					this->bConectar->Text = "Desconectar";
+					//this->bConectar->Text = "Desconectar";
 					printf("arduino->estaConectado() EXITO\n");
-					tbInfo->Text = "EXIT: Puerto conectado";
+					tbInfo->Text = this->cbPuertos->SelectedItem->ToString()+": conectado";
+					statusStrip1->BackColor = Color::Green;
 				}
 				else {
-					tbInfo->Text = "ERROR: Puerto sin dispositivo";
+					tbInfo->Text = this->cbPuertos->SelectedItem->ToString()+": sin dispositivo";
+					statusStrip1->BackColor = Color::Gray;
 				}
 			}
-		
+			// simulacion de entradas
+			/*addFila(1, 0.0f, 4);
+			addFila(1, 1.0f, 5);
+			addFila(1, 2.0f, 6);
+			addFila(1, 3.0f, 5);
+			addFila(1, 4.0f, 4);
+			addFila(1, 5.0f, 3);
+			addFila(1, 6.0f, 4);*/
 		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -704,13 +801,12 @@ namespace ProjectForms {
 
 			arduino = new Serial();
 			this->label2->Text = L"DESCONECTADO";
-			this->bConectar->Text = "Conectar";
-
-			//planoXY = new PlanoXY();
-
-			arduino->addSensor("TempA1");
-			arduino->addSensor("TempA2");
-			arduino->addSensor("TempA3");
+			this->bConectar->Image = Image::FromFile("Conexiones.png");
+			this->butComenzar->Image = Image::FromFile("Comenzar.png");
+			this->butDetener->Image = Image::FromFile("Detener.png");
+			this->butMuestra->Image = Image::FromFile("muestra.png");
+			this->butLimpiar->Image = Image::FromFile("Limpiar.png");
+			//this->bConectar->Text = "Conectar";
 
 			graficosPrincipal = this->CreateGraphics();
 
@@ -735,19 +831,29 @@ namespace ProjectForms {
 			Application::Exit();
 		}
 		private: System::Void ajustesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-			printf("	ajustesToolStripMenuItem_Click\n");
-			SubMenuArduino^ subMenuArduino = gcnew SubMenuArduino();
+			
+			if (arduino->estaConectado()) {
+				printf("	ajustesToolStripMenuItem_Click\n");
+				SubMenuArduino^ subMenuArduino = gcnew SubMenuArduino();
 
-			std::vector<std::string> vecSensores = arduino->getVecSensores();
-
-			for (int i = 0; i < vecSensores.size(); i++) {
-				subMenuArduino->cargarSensores(vecSensores.at(i));
+				subMenuArduino->Show();
+				subMenuArduino->setArduino(arduino);
+				subMenuArduino->setEstadoPlanoXY(planoXY);
+				planoXY->mostrarConfSensor(0);
+				planoXY->mostrarConfSensor(1);
 			}
-			subMenuArduino->Show();
-			subMenuArduino->setArduino(arduino);
-			subMenuArduino->setEstadoPlanoXY(planoXY);
-			planoXY->mostrarConfSensor(0);
-			planoXY->mostrarConfSensor(1);
+			else {
+				// Initializes the variables to pass to the MessageBox::Show method.
+				
+				String^ caption = "Atencion"; 
+				String^ message = "Primero debe conectar el modulo arduino";				
+				MessageBoxButtons buttons = MessageBoxButtons::OK;
+				System::Windows::Forms::DialogResult result;
+
+				// Displays the MessageBox.
+				result = MessageBox::Show(this, message, caption, buttons);
+			}
+			
 		}
 
 private: System::Void toolStripStatusLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -770,37 +876,24 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	if (entrada->IndexOf(';') != -1) {
 		//printf("ENTRE	entrada->Length %d '%s'", entrada->Length, entrada);
 		array<String^>^ arrayDatos = entrada->Split(';');
-		//for (int i = 0; i < arrayDatos->Length; i++) {
 
-			//printf(" arrayDatos[%d] '%s'\n", i, arrayDatos[i]);
+		if ((arrayDatos[0]->Contains(",")) && (arrayDatos[0]->Contains("."))) {
+			array<String^>^ datoDupla = arrayDatos[0]->Split(',');
+			if (2 == datoDupla->Length) {
+				int idSensor = int::Parse(datoDupla[0]);
+				double datoSensor = stringToDouble(datoDupla[1]);
 
-			if ((arrayDatos[0]->Contains(",")) && (arrayDatos[0]->Contains("."))) {
-				array<String^>^ datoDupla = arrayDatos[0]->Split(',');
-				if (2 == datoDupla->Length) {
-					int idSensor = int::Parse(datoDupla[0]);
-					double datoSensor = stringToDouble(datoDupla[1]);
+				planoXY->agregarMuestra(idSensor,datoSensor);
+				//planoXY->agregarMuestra(2, 60.0f - datoSensor);
+				printf("	entrada[%d]: '%s'\n", entrada->Length, entrada);
 
-					planoXY->agregarMuestra(idSensor,datoSensor);
-					//planoXY->agregarMuestra(2, 60.0f - datoSensor);
-					printf("	entrada[%d]: '%s'\n", entrada->Length, entrada);
+				float time = planoXY->getUltimoTiempo(idSensor);
+				addFila(idSensor,time, datoSensor);
 
-					float time = planoXY->getUltimoTiempo(idSensor);
-					addFila(idSensor,time, datoSensor);
-
-					/*if (subMenuTablas) {
-						float time = planoXY->getUltimoTiempo(idSensor);
-						subMenuTablas->addFila(time, datoSensor);
-					}*/
-
-					// Elimino el data ingresado
-					//if (0 <= entrada->IndexOf(';')) {
-						//printf("	Entra Substring[%d]: '%s' ", entrada->Length, entrada);
-						entrada = entrada->Substring(entrada->IndexOf(';')+1);
-						//printf("	Sale Substring[%d]: '%s'\n", entrada->Length, entrada);
-					//}
-				}
+				entrada = entrada->Substring(entrada->IndexOf(';')+1);
 			}
-		//}
+		}
+
 	}
 
 	
@@ -819,61 +912,90 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	delete bmpGra1;
 	delete bmpGra2;
 
+
+
 	if (planoXY->getCambioSensor(0) || planoXY->getCambioSensor(1)) {
 		if ((planoXY->getIdSensor(0) == -1) && (planoXY->getIdSensor(1) == -1)) {
 			butComenzar->Enabled = false;
 			butDetener->Enabled = false;
 			butMuestra->Enabled = false;
 		}
-		else {
-			butComenzar->Enabled = true;
-			butDetener->Enabled = true;
-			butMuestra->Enabled = true;
+		else if (planoXY->getCambioSensor(0)) {
+			String^ str1;
+			switch (planoXY->getIdSensor(0)) {
+			case -1: str1 = "--"; break;
+			case 0: str1 = "max6675 - Temperatura"; break;
+			case 1: str1 = "bmp180 - Temperatura"; break;
+			case 2: str1 = "bmp180 - Presión"; break;
+			case 3: str1 = "ds18b20 - Temperatura"; break;
+			case 4: str1 = "dht11 - Temperatura"; break;
+			case 5: str1 = "dht11 - Humedad"; break;
+			case 6: str1 = "HX710 - Presión manguera"; break;
+			case 7: str1 = "HCSR04 - Posición ultrasónico"; break;
+			case 8: str1 = "bmp280 - Temperatura"; break;
+			case 9: str1 = "bmp280 - Presión"; break;
+			}
+			labS1->Text = str1;
+			sen1LabNom->Text = str1;
+			planoXY->setCambioSensor(0, false);
+
+			// analizo los botones para abilitar y desabilitar
+			if (planoXY->getTipoMue(0) == 0) {
+				butMuestra->Enabled = true;
+			}
+			else if (planoXY->getTipoMue(0) == 1) {
+				butComenzar->Enabled = true;
+				butDetener->Enabled = false;
+				planoXY->setEstadoGeneral(0);
+			}
+		}
+		else if (planoXY->getCambioSensor(1)) {
+			String^ str2;
+			switch (planoXY->getIdSensor(1)) {
+			case -1: str2 = "--"; break;
+			case 0: str2 = "max6675 - Temperatura"; break;
+			case 1: str2 = "bmp180 - Temperatura"; break;
+			case 2: str2 = "bmp180 - Presión"; break;
+			case 3: str2 = "ds18b20 - Temperatura"; break;
+			case 4: str2 = "dht11 - Temperatura"; break;
+			case 5: str2 = "dht11 - Humedad"; break;
+			case 6: str2 = "HX710 - Presión manguera"; break;
+			case 7: str2 = "HCSR04 - Posición ultrasónico"; break;
+			case 8: str2 = "bmp280 - Temperatura"; break;
+			case 9: str2 = "bmp280 - Presión"; break;
+			}
+			labS2->Text = str2;
+			sen2LabNom->Text = str2;
+			planoXY->setCambioSensor(1, false);
+
+			// analizo los botones para abilitar y desabilitar
+			if (planoXY->getTipoMue(1) == 0) {
+				butMuestra->Enabled = true;
+			}
+			else if (planoXY->getTipoMue(1) == 1) {
+				butComenzar->Enabled = true;
+				butDetener->Enabled = false;
+				planoXY->setEstadoGeneral(0);
+			}
+		}
+		if (planoXY->getIdSensor(0) >= 0 &&	planoXY->getTipoMue(0) == 0 &&
+			planoXY->getIdSensor(1) >= 0 && planoXY->getTipoMue(1) == 0){
+			
+			butComenzar->Enabled = false;
+			butDetener->Enabled = false;
+		}
+		if ((planoXY->getIdSensor(0) < 0 || 
+			(planoXY->getIdSensor(0) >= 0 && planoXY->getTipoMue(0) == 1)) &&
+			(planoXY->getIdSensor(1) < 0 || 
+			(planoXY->getIdSensor(1) >= 0 && planoXY->getTipoMue(1) == 1))) {
+
+			butMuestra->Enabled = false;
 		}
 	}
 
-	if (planoXY->getCambioSensor(0)) {
-		char mjs[20];
-		switch (planoXY->getIdSensor(0)) {
-		case -1: strcpy(mjs, "--"); break;
-		case 0: strcpy(mjs, "max6675 - Temperatura"); break;
-		case 1: strcpy(mjs, "bmp180 - Temperatura"); break;
-		case 2: strcpy(mjs, "bmp180 - Presion"); break;
-		case 3: strcpy(mjs, "ds18b20 - Temperatura"); break;
-		case 4: strcpy(mjs, "dht11 - Temperatura"); break;
-		case 5: strcpy(mjs, "dht11 - Humedad"); break;
-		case 6: strcpy(mjs, "HX710 - Presion manguera"); break;
-		case 7: strcpy(mjs, "HCSR04 - Posición ultrasónico"); break;
-		case 8: strcpy(mjs, "7,"); break;
-		case 9: strcpy(mjs, "8,"); break;
-		}
-		String^ str1 = gcnew String(mjs);
-		labS1->Text = str1;
+	
 
-		
 
-		planoXY->setCambioSensor(0, false);
-	}
-	if (planoXY->getCambioSensor(1)) {
-		char mjs[20];
-		switch (planoXY->getIdSensor(1)) {
-		case -1: strcpy(mjs, "--"); break;
-		case 0: strcpy(mjs, "max6675 - Temperatura"); break;
-		case 1: strcpy(mjs, "bmp180 - Temperatura"); break;
-		case 2: strcpy(mjs, "bmp180 - Presion"); break;
-		case 3: strcpy(mjs, "ds18b20 - Temperatura"); break;
-		case 4: strcpy(mjs, "dht11 - Temperatura"); break;
-		case 5: strcpy(mjs, "dht11 - Humedad"); break;
-		case 6: strcpy(mjs, "HX710 - Presion manguera"); break;
-		case 7: strcpy(mjs, "HCSR04 - Posición ultrasónico"); break;
-		case 8: strcpy(mjs, "7,"); break;
-		case 9: strcpy(mjs, "8,"); break;
-		}
-		String^ str2 = gcnew String(mjs);
-		labS2->Text = str2;
-
-		planoXY->setCambioSensor(1, false);
-	}
 }
 	private: bool hayDatos(String^ s) {
 		int posComa = s->IndexOf(',');
@@ -926,36 +1048,48 @@ private: System::Void checkGrilla_CheckedChanged(System::Object^ sender, System:
 private: System::Void checkAutoAjuste_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	planoXY->setAutoAjuste(checkAutoAjuste->Checked);
 }
-private: System::Void checkBox1_CheckedChanged_1(System::Object^ sender, System::EventArgs^ e) {
-	planoXY->setBarras(checkBoxBarras->Checked);
-}
 private: System::Void MyForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-	Point^ pt = this->PointToClient(Control::MousePosition);
-	clicIni.X = pt->X - planoPos.X;
-	clicIni.Y = pt->Y - planoPos.Y;
-	clicDown = true;
-	printf("	pictureBox1_MouseDown: %d,%d\n", clicIni.X, clicIni.Y); 
-	//planoXY->seleccionar(true, clicIni, clicIni);
-
-}
-private: System::Void MyForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-
-	
-
-	Point^ pt = this->PointToClient(Control::MousePosition);
-	clicFin.X = pt->X - planoPos.X;
-	clicFin.Y = pt->Y - planoPos.Y;
-
-	//printf("	pictureBox1_MouseUp: %d,%d\n", clicFin.X, clicFin.Y);
-
-	
 
 	switch (e->Button) {
 	case System::Windows::Forms::MouseButtons::Left:
 		// Izquierdo		
 
-		/*if (clicDown) {
+		Point^ pt = this->PointToClient(Control::MousePosition);
+		clicIni.X = pt->X - planoPos.X;
+		clicIni.Y = pt->Y - planoPos.Y;
+		clicDown = true;
+		//printf("	pictureBox1_MouseDown: %d,%d\n", clicIni.X, clicIni.Y);
+
+		if (clicIni.Y < planoRes.Y) {
+			numGraficaClic = 0;
+			//printf("	arriba\n");
+		}
+		else {
+			numGraficaClic = 1;
+			//printf("	abajo\n");
+			clicIni.Y = pt->Y - planoPos.Y- planoRes.Y - 10;
+		}
+		planoXY->seleccionar(numGraficaClic, true, clicIni, clicIni);
+
+		//planoXY->seleccionar(1,true, clicIni, clicIni);
+	}
+}
+private: System::Void MyForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+	Point^ pt = this->PointToClient(Control::MousePosition);
+	clicFin.X = pt->X - planoPos.X;
+	if (numGraficaClic == 0) {
+		clicFin.Y = pt->Y - planoPos.Y;
+	}
+	else {
+		clicFin.Y = pt->Y - (planoPos.Y + planoRes.Y + 10);
+	}
+
+	switch (e->Button) {
+	case System::Windows::Forms::MouseButtons::Left:
+		// Izquierdo		
+
+		if (clicDown) {
 			clicDown = false;
 			if (clicIni.X > clicFin.X) {
 				int aux = clicIni.X;
@@ -968,13 +1102,16 @@ private: System::Void MyForm_MouseUp(System::Object^ sender, System::Windows::Fo
 				clicFin.Y = aux;
 			}
 			if ((clicIni.X != clicFin.X) && (clicIni.Y != clicFin.Y)) {
-				planoXY->acercarRegion(clicIni, clicFin);
-				planoXY->seleccionar(false, clicFin, clicFin);
+				planoXY->acercarRegion(numGraficaClic,clicIni, clicFin);
+				planoXY->seleccionar(numGraficaClic,false, clicFin, clicFin);
+				this->checkAutoAjuste->Checked = false;
+				planoXY->setAutoAjuste(false);
 			}
 			else {
-				planoXY->alejarZoom();
+				//planoXY->alejarZoom();
+				planoXY->alejarZoomG1G2();
 			}
-		}*/
+		}
 
 		// si clic esta en graficas
 		if ((planoPos.X < pt->X) && (pt->X < planoPos.X + planoRes.X)) {
@@ -982,7 +1119,7 @@ private: System::Void MyForm_MouseUp(System::Object^ sender, System::Windows::Fo
 			printf("	zoom %f\n", porX);
 			float porI = porX * 0.25f;
 			float porF = 1.0f - ((1.0f - porX) * 0.25f);
-			planoXY->acercarRegionPorcentajesX(porI, porF);
+			//planoXY->acercarRegionPorcentajesX(porI, porF);
 		}
 
 		break;
@@ -996,7 +1133,13 @@ private: System::Void MyForm_MouseMove(System::Object^ sender, System::Windows::
 	if (clicDown) {
 		Point^ pt = this->PointToClient(Control::MousePosition);
 		clicFin.X = pt->X - planoPos.X;
-		clicFin.Y = pt->Y - planoPos.Y;
+		if (numGraficaClic == 0) {
+			clicFin.Y = pt->Y - planoPos.Y;
+		}
+		else {
+			clicFin.Y = pt->Y - (planoPos.Y + planoRes.Y + 10);
+		}
+		
 
 		Point puntoA, puntoB;
 		if (clicIni.X <= clicFin.X) {
@@ -1013,15 +1156,30 @@ private: System::Void MyForm_MouseMove(System::Object^ sender, System::Windows::
 		}
 		else {
 			puntoA.Y = clicFin.Y;
-			puntoB.Y = clicIni.Y;
+			puntoB.Y = clicIni.Y; 
 		}
 
-		//planoXY->seleccionar(true,puntoA, puntoB);
+		planoXY->seleccionar(numGraficaClic,true,puntoA, puntoB);
 	}
 }
 
 private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		
+	printf("	MyForm_KeyDown\n"); 
+	switch (e->KeyCode) {
+	case Keys::A:
+		printf("	A\n");
+		planoXY->moverRangosX(-5);
+		break;
+	case Keys::D:
+		planoXY->moverRangosX(5);
+		break;
+	case Keys::Up:
+		planoXY->moverRangosY(5);
+		break;
+	case Keys::Down:
+		planoXY->moverRangosY(-5);
+		break;
+	}
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -1042,6 +1200,9 @@ private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^
 		planoXY->borrarRegistros();
 		dataGridView1->Rows->Clear();
 		dataGridView2->Rows->Clear();
+
+		planoXY->setEstadoGeneral(0);
+		butDetener_Click(sender, e);
 	}
 
 }
@@ -1071,25 +1232,33 @@ private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^
 		dataGridView2->Location = Point(planoRes.X + size.Width + size.Width + 90, (planoPos.Y + 30));
 		dataGridView2->Size = size;
 
-		sen1LabNom->Location = Point(planoRes.X + size.Width + 80, planoPos.Y);
-		
+		sen1LabNom->Location = Point(planoRes.X + size.Width + 80, planoPos.Y);		
 		sen2LabNom->Location = Point(planoRes.X + size.Width + size.Width + 90, planoPos.Y);
+		checkS1TablaAuto->Location = Point(planoRes.X + size.Width + 80, this->Height - 90);
+		checkS2TablaAuto->Location = Point(planoRes.X + size.Width + size.Width + 90, this->Height - 90);
 
 		this->Refresh();
 	}
 	private: System::Void ventanaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	public: void addFila(int g, float tiempo, float dato) {
-		//dataGridView1->RowCount();
+		char uni[10];
+		planoXY->getUnidad(g, uni);
+		System::String^ unidad = gcnew String(uni);
 		switch (g) {
-		case 1:
-			dataGridView1->Rows->Add(tiempo, dato);
+		case 1:						
+			dataGridView1->Rows->Add(tiempo+" s", dato + unidad);
+			if (checkS1TablaAuto->Checked) {
+				this->dataGridView1->FirstDisplayedScrollingRowIndex = this->dataGridView1->RowCount - 1;
+			}			
 			break;
 		case 2:
-			dataGridView2->Rows->Add(tiempo, dato);
+			dataGridView2->Rows->Add(tiempo + " s", dato + unidad);
+			if (checkS2TablaAuto->Checked) {
+				this->dataGridView2->FirstDisplayedScrollingRowIndex = this->dataGridView2->RowCount - 1;
+			}			
 			break;
 		}
-		
 	}
 
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1153,6 +1322,10 @@ private: System::Void buttonComenzar(System::Object^ sender, System::EventArgs^ 
 		printf(" SENSOR 2 '%s'\n", mjs);
 		arduino->escribirDatos(mjs, strlen(mjs));
 	}
+
+	butComenzar->Enabled = false;
+	butDetener->Enabled = true;
+	planoXY->setEstadoGeneral(1);
 }
 private: System::Void butDetener_Click(System::Object^ sender, System::EventArgs^ e) {
 	if ((planoXY->getIdSensor(0) != -1) || (planoXY->getIdSensor(1) != -1)) {
@@ -1161,20 +1334,39 @@ private: System::Void butDetener_Click(System::Object^ sender, System::EventArgs
 		printf(" '%s'\n", mjs);
 		arduino->escribirDatos(mjs, strlen(mjs));
 	}
+	butComenzar->Enabled = true;
+	butDetener->Enabled = false;
+	planoXY->setEstadoGeneral(0);
 }
 private: System::Void butMuestra_Click(System::Object^ sender, System::EventArgs^ e) {
 	if ((planoXY->getIdSensor(0) != -1) && (planoXY->getTipoMue(0) == 0)) {
 		char mjs[20];
-		strcpy(mjs, "Get1");
+		strcpy(mjs, "Get1\n");
 		printf(" '%s'\n", mjs);
 		arduino->escribirDatos(mjs, strlen(mjs));
 	}
 	if ((planoXY->getIdSensor(1) != -1) && (planoXY->getTipoMue(1) == 0)) {
 		char mjs[20];
-		strcpy(mjs, "Get2");
+		strcpy(mjs, "Get2\n");
 		printf(" '%s'\n", mjs);
 		arduino->escribirDatos(mjs, strlen(mjs));
 	}
 }
+private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	checkS2TablaAuto->Checked = false;
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	checkS1TablaAuto->Checked = false;
+}
+private: System::Void button1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	
+}
 };
 }
+
+// LibreLab fue desarrollado en el entorno Visual Studio en su version Community 2022.
+// Se implemento en lenguaje C++ utilizando el framework Windows Forms de .NET para el manejo de ventana y eventos estandares.
+// Al proyecto LibreLab se incluye los modulos de ventanas, el modulo de conexion con los sensores (kit arduino), el modulo de almacenamiento y la exportacion de los datos.
+// Ademas, se incluyo el modulo de instalacion compatible con la arquitectura Windows de 64bits.
+// El diseno propuesto muestra informacion acotada al usuario pensado para el uso rapido e intuitivo, con la informacion grafica como area principal de la comunicacion con el usuario.
+// Dicha disposicion fue propuesta por docentes investigadores que haran uso de la herramienta frente a estudiantes de la facultad. 

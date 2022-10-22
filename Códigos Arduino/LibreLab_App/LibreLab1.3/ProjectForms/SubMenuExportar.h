@@ -78,18 +78,23 @@ namespace ProjectForms {
 			this->groupBox1->Controls->Add(this->textBoxArch);
 			this->groupBox1->Controls->Add(this->checkBoxS2);
 			this->groupBox1->Controls->Add(this->checkBoxS1);
-			this->groupBox1->Location = System::Drawing::Point(12, 12);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->Location = System::Drawing::Point(16, 15);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(260, 155);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
+			this->groupBox1->Size = System::Drawing::Size(347, 191);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Opciones para Exportar";
 			// 
 			// buttonCan
 			// 
-			this->buttonCan->Location = System::Drawing::Point(91, 118);
+			this->buttonCan->Location = System::Drawing::Point(121, 145);
+			this->buttonCan->Margin = System::Windows::Forms::Padding(4);
 			this->buttonCan->Name = L"buttonCan";
-			this->buttonCan->Size = System::Drawing::Size(75, 23);
+			this->buttonCan->Size = System::Drawing::Size(100, 28);
 			this->buttonCan->TabIndex = 4;
 			this->buttonCan->Text = L"Cancelar";
 			this->buttonCan->UseVisualStyleBackColor = true;
@@ -97,9 +102,10 @@ namespace ProjectForms {
 			// 
 			// buttonExp
 			// 
-			this->buttonExp->Location = System::Drawing::Point(172, 118);
+			this->buttonExp->Location = System::Drawing::Point(229, 145);
+			this->buttonExp->Margin = System::Windows::Forms::Padding(4);
 			this->buttonExp->Name = L"buttonExp";
-			this->buttonExp->Size = System::Drawing::Size(75, 23);
+			this->buttonExp->Size = System::Drawing::Size(100, 28);
 			this->buttonExp->TabIndex = 3;
 			this->buttonExp->Text = L"Exportar";
 			this->buttonExp->UseVisualStyleBackColor = true;
@@ -107,9 +113,10 @@ namespace ProjectForms {
 			// 
 			// textBoxArch
 			// 
-			this->textBoxArch->Location = System::Drawing::Point(7, 75);
+			this->textBoxArch->Location = System::Drawing::Point(9, 92);
+			this->textBoxArch->Margin = System::Windows::Forms::Padding(4);
 			this->textBoxArch->Name = L"textBoxArch";
-			this->textBoxArch->Size = System::Drawing::Size(171, 20);
+			this->textBoxArch->Size = System::Drawing::Size(227, 27);
 			this->textBoxArch->TabIndex = 2;
 			this->textBoxArch->Text = L"backup01.dat";
 			this->textBoxArch->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -117,9 +124,10 @@ namespace ProjectForms {
 			// checkBoxS2
 			// 
 			this->checkBoxS2->AutoSize = true;
-			this->checkBoxS2->Location = System::Drawing::Point(7, 52);
+			this->checkBoxS2->Location = System::Drawing::Point(9, 64);
+			this->checkBoxS2->Margin = System::Windows::Forms::Padding(4);
 			this->checkBoxS2->Name = L"checkBoxS2";
-			this->checkBoxS2->Size = System::Drawing::Size(68, 17);
+			this->checkBoxS2->Size = System::Drawing::Size(98, 24);
 			this->checkBoxS2->TabIndex = 1;
 			this->checkBoxS2->Text = L"Sensor 2";
 			this->checkBoxS2->UseVisualStyleBackColor = true;
@@ -127,20 +135,23 @@ namespace ProjectForms {
 			// checkBoxS1
 			// 
 			this->checkBoxS1->AutoSize = true;
-			this->checkBoxS1->Location = System::Drawing::Point(7, 29);
+			this->checkBoxS1->Location = System::Drawing::Point(9, 36);
+			this->checkBoxS1->Margin = System::Windows::Forms::Padding(4);
 			this->checkBoxS1->Name = L"checkBoxS1";
-			this->checkBoxS1->Size = System::Drawing::Size(68, 17);
+			this->checkBoxS1->Size = System::Drawing::Size(98, 24);
 			this->checkBoxS1->TabIndex = 0;
 			this->checkBoxS1->Text = L"Sensor 1";
 			this->checkBoxS1->UseVisualStyleBackColor = true;
 			// 
 			// SubMenuExportar
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(284, 180);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(232)), static_cast<System::Int32>(static_cast<System::Byte>(223)),
+				static_cast<System::Int32>(static_cast<System::Byte>(226)));
+			this->ClientSize = System::Drawing::Size(379, 222);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"SubMenuExportar";
 			this->Text = L"Exportar";
 			this->Load += gcnew System::EventHandler(this, &SubMenuExportar::SubMenuExportar_Load);
@@ -159,23 +170,34 @@ private: System::Void buttonExp_Click(System::Object^ sender, System::EventArgs^
 
 	if (checkBoxS1->Checked) {	
 		StreamWriter^ streamWriter1 = gcnew StreamWriter("Sen1-"+this->textBoxArch->Text);
-		streamWriter1->WriteLine("Sensor 1");
-		for (int i = 0; i < planoXY->getS1CantMuestras(); i++) {
-			Muestra muestra = planoXY->getMuestraS1(i);
-			String^ s1 = muestra.time.ToString() + "	" + muestra.data.ToString();
-			streamWriter1->WriteLine(s1);
+		if (streamWriter1) {
+			streamWriter1->WriteLine("Sensor 1");
+			for (int i = 0; i < planoXY->getS1CantMuestras(); i++) {
+				Muestra muestra = planoXY->getMuestraS1(i);
+				String^ s1 = muestra.time.ToString() + "	" + muestra.data.ToString();
+				streamWriter1->WriteLine(s1);
+			}
+			streamWriter1->Close();
 		}
-		streamWriter1->Close();
+		else {
+			printf("Error al intentar escribir un archivo 1\n");
+		}
+		
 	}
 	if (checkBoxS2->Checked) {
 		StreamWriter^ streamWriter2 = gcnew StreamWriter("Sen2-" + this->textBoxArch->Text);
-		streamWriter2->WriteLine("Sensor 2");
-		for (int i = 0; i < planoXY->getS2CantMuestras(); i++) {
-			Muestra muestra = planoXY->getMuestraS2(i);
-			String^ s1 = muestra.time.ToString() + "	" + muestra.data.ToString();
-			streamWriter2->WriteLine(s1);
+		if (streamWriter2){
+			streamWriter2->WriteLine("Sensor 2");
+			for (int i = 0; i < planoXY->getS2CantMuestras(); i++) {
+				Muestra muestra = planoXY->getMuestraS2(i);
+				String^ s1 = muestra.time.ToString() + "	" + muestra.data.ToString();
+				streamWriter2->WriteLine(s1);
+			}
+			streamWriter2->Close();
 		}
-		streamWriter2->Close();
+		else {
+			printf("Error al intentar escribir un archivo 2\n");
+		}
 	}
 
 

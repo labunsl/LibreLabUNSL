@@ -3,6 +3,7 @@
 #include <vector>
 
 using namespace System::Drawing;
+using namespace System;
 
 typedef struct Est1{
 	float time;
@@ -15,10 +16,13 @@ typedef struct EstGrafica {
 	int tipoMue; // 1:periodico 0:manual
 	int periodo;
 	int estado; // 0inactivo 1:activo
+	char unidad[10];
 
 	bool flagActiva;
 	bool flagVisible;
 	bool flagHuboCambio;
+	bool flagSelMuestro;
+	float selIniX,selIniY,selFinX,selFinY;
 
 	float tiempoUlt;
 	
@@ -35,6 +39,20 @@ typedef struct EstZoom {
 	bool flagAutoAju;
 } Zoom;
 
+enum ID_SENSORES {
+	S_Ninguno = -1,
+	S0_Temp_Termocupla = 0,
+	S1_Temp_Bmp = 1,
+	S2_Pres_Bmp = 2,
+	S3_Temp_OneWire = 3,
+	S4_Temp_DHT = 4,
+	S5_Hume_DHT = 5,
+	S6_Pres_HX710 = 6,
+	S7_Pres_HCSR04 = 7,
+	S8_Temp_BMP280 = 8,
+	S9_Pres_BMP280 = 9
+};
+
 class PlanoXY{
 
 private:
@@ -49,14 +67,15 @@ private:
 	Point rangoIniG2, rangoFinG2;
 
 	bool flagPuntos,flagLineas,flagGrilla,flagAutoAjuste, flagBarras;
-	bool selMuestro;
-	Point selIni, selFin;
+	
+	//bool selMuestro;
+	//Point selIni, selFin;
 
 	std::vector<Muestra> vecMuestras1,vecMuestras2;
 	std::vector<Grafica> vecGraficas;
 	std::vector<Zoom> vecZoomG1, vecZoomG2;
 
-	int estS1, estS2;
+	int estS1, estS2,estadoGeneral;
 
 	void limpiarDatos() {
 		rangoIniG1.X = -2;
@@ -113,6 +132,10 @@ private:
 		strcpy(nuevaGrafica.nombre, "Ninguno");
 		nuevaGrafica.tipoMue = 0;
 		nuevaGrafica.periodo = 1000;
+		strcpy(nuevaGrafica.unidad, "");
+		nuevaGrafica.flagSelMuestro = false;
+		//nuevaGrafica.selIni = Point(0, 0);
+		//nuevaGrafica.selFin = Point(0, 0);
 
 		nuevaGrafica.flagHuboCambio = false;
 
@@ -140,14 +163,13 @@ public:
 		flagAutoAjuste = true;
 		flagBarras = false;
 
-		selMuestro = false;
-
 		cargarGrafica(true, true,1,2,3);
 		cargarGrafica(true, true,4,5,6);
 		tiempoUlt = 0;
 
 		estS1 = 0;
 		estS2 = 0;
+		estadoGeneral = 0;
 	};
 	~PlanoXY() {};
 
@@ -168,6 +190,7 @@ public:
 			if (flagAutoAjuste) {
 				while (rangoFinG1.X < puntoActual.time) {
 					rangoFinG1.X += 20;
+					rangoFinG2.X = rangoFinG1.X;
 				}
 				while (rangoFinG1.Y < puntoActual.data) {
 					rangoFinG1.Y += puntoActual.data * 0.4f;
@@ -187,6 +210,7 @@ public:
 			if (flagAutoAjuste) {
 				while (rangoFinG2.X < puntoActual.time) {
 					rangoFinG2.X += 20;
+					rangoFinG1.X = rangoFinG2.X;
 				}
 				while (rangoFinG2.Y < puntoActual.data) {
 					rangoFinG2.Y += puntoActual.data * 0.4f;
@@ -236,23 +260,35 @@ public:
 		}
 	}
 
-	void acercarRegion(Point clicIni, Point clicFin) {
+	void acercarRegion(int g, Point clicIni, Point clicFin) {
 		// calculo por porcentajes de la pantalla donde fueron los clics
 
 		//printf("	acercarRegion %d %d %d %d\n", clicIni.X, clicIni.Y, clicFin.X, clicFin.Y);
-		printf("acercarRegion\n");
-		Zoom zoomUlt;
-		zoomUlt.selIniX = rangoIniG1.X;
-		zoomUlt.selIniY = rangoIniG1.Y;
-		zoomUlt.selFinX = rangoFinG1.X;
-		zoomUlt.selFinY = rangoFinG1.Y;
-		zoomUlt.flagAutoAju = flagAutoAjuste;
-		vecZoomG1.push_back(zoomUlt);
+		//printf("acercarRegion\n");
+
+		
+		Zoom zoomUltG1, zoomUltG2;
+		zoomUltG1.selIniX = rangoIniG1.X;
+		zoomUltG1.selIniY = rangoIniG1.Y;
+		zoomUltG1.selFinX = rangoFinG1.X;
+		zoomUltG1.selFinY = rangoFinG1.Y;
+		zoomUltG1.flagAutoAju = flagAutoAjuste;
+		zoomUltG2.selIniX = rangoIniG2.X;
+		zoomUltG2.selIniY = rangoIniG2.Y;
+		zoomUltG2.selFinX = rangoFinG2.X;
+		zoomUltG2.selFinY = rangoFinG2.Y;
+		zoomUltG2.flagAutoAju = flagAutoAjuste;
+		vecZoomG1.push_back(zoomUltG1);
+		vecZoomG2.push_back(zoomUltG2);
+
+		
 
 		flagAutoAjuste = false;
 
 		//regActivado = true;
 		Point tamPlano(gMaxX+(gMargX*2), gMaxY+(gMargY*2));
+
+		//printf("	tamPlano %d %d\n", tamPlano.X, tamPlano.Y);
 
 		PointF porIni, porFin;
 		porIni.X = clicIni.X / (float)tamPlano.X;
@@ -261,18 +297,51 @@ public:
 		porFin.Y = (tamPlano.Y - clicFin.Y) / (float)tamPlano.Y;
 
 		//printf("	porcentajes x[%.2f,%.2f] y[%.2f,%.2f]\n", porIni.X, porFin.X, porIni.Y, porFin.Y);
+		int difX,difY;
+		if (g == 0) {
+			difX = rangoFinG1.X - rangoIniG1.X;
+			difY = rangoFinG1.Y - rangoIniG1.Y;
 
-		int difX = rangoFinG1.X - rangoIniG1.X;
-		int difY = rangoFinG1.Y - rangoIniG1.Y;
+			Point rangoInicioAux;
+			rangoInicioAux.X = rangoIniG1.X;
+			rangoInicioAux.Y = rangoIniG1.Y;
 
-		Point rangoInicioAux;
-		rangoInicioAux.X = rangoIniG1.X;
-		rangoInicioAux.Y = rangoIniG1.Y;
+			rangoIniG1.X = ((float)difX * porIni.X) + rangoInicioAux.X;
+			rangoIniG1.Y = ((float)difY * porIni.Y) + rangoInicioAux.Y;
+			rangoFinG1.X = ((float)difX * porFin.X) + rangoInicioAux.X;
+			rangoFinG1.Y = ((float)difY * porFin.Y) + rangoInicioAux.Y;			
 
-		rangoIniG1.X = ((float)difX * porIni.X) + rangoInicioAux.X;
-		rangoIniG1.Y = ((float)difY * porIni.Y) + rangoInicioAux.Y;
-		rangoFinG1.X = ((float)difX * porFin.X) + rangoInicioAux.X;
-		rangoFinG1.Y = ((float)difY * porFin.Y) + rangoInicioAux.Y;
+			rangoIniG2.X = rangoIniG1.X;
+			rangoFinG2.X = rangoFinG1.X;
+
+			if ((rangoIniG1.X + 2 > rangoFinG1.X)|| (rangoIniG1.Y + 2 > rangoFinG1.Y)) {
+				alejarZoomG1G2();
+			}
+		}
+		else {
+			difX = rangoFinG2.X - rangoIniG2.X;
+			difY = rangoFinG2.Y - rangoIniG2.Y;
+
+			Point rangoInicioAux;
+			rangoInicioAux.X = rangoIniG2.X;
+			rangoInicioAux.Y = rangoIniG2.Y;
+
+			rangoIniG2.X = ((float)difX * porIni.X) + rangoInicioAux.X;
+			rangoIniG2.Y = ((float)difY * porIni.Y) + rangoInicioAux.Y;
+			rangoFinG2.X = ((float)difX * porFin.X) + rangoInicioAux.X;
+			rangoFinG2.Y = ((float)difY * porFin.Y) + rangoInicioAux.Y;
+
+			rangoIniG1.X = rangoIniG2.X;
+			rangoFinG1.X = rangoFinG2.X;
+
+			if ((rangoIniG2.X + 2 > rangoFinG2.X) || (rangoIniG2.Y + 2 > rangoFinG2.Y)) {
+				alejarZoomG1G2();
+			}
+		}
+
+		
+
+		
 
 		//printf("	nuevo rango x[%d,%d] y[%d,%d]\n", rangoIni.X, rangoFin.X, rangoIni.Y, rangoFin.Y);
 
@@ -308,8 +377,6 @@ public:
 		rangoIniG1.X = rangoInicioAux.X + (int)(tamX * porI);
 		rangoFinG1.X = rangoInicioAux.X + (int)(tamX * porF);
 
-
-
 		// G2
 		zoomUlt.selIniX = rangoIniG2.X;
 		zoomUlt.selIniY = rangoIniG2.Y;
@@ -331,13 +398,8 @@ public:
 		rangoFinG2.X = rangoInicioAux.X + (int)(tamX * porF);
 
 		flagAutoAjuste = false;
-
-		//printf(" region: %d %f = %d\n", rangoIni.X, tamX * porI, rangoIni.X + (int)(tamX * porI));
-		
-
+		printf(" region: %d, %d\n", rangoIniG1.X, rangoIniG1.Y);
 		//acercarRegion(clicI, clicF);
-
-
 	}
 
 	Point getPixel(int g, Point puntoEnGrafica, int offsetX=0, int offsetY=0) {
@@ -407,8 +469,8 @@ public:
 		// Muestro Grilla	
 		if (flagGrilla) {
 			for (int i = rangoIni.Y; i < rangoFin.Y; i++) {
-				int umbral = 10000;
-				while (rangoFin.Y - rangoIni.Y < umbral + (umbral * 0.5f)) {
+				int umbral = 1000000;
+				while (rangoFin.Y - rangoIni.Y < umbral + (umbral * 0.8f)) {
 					umbral *= 0.1;
 				}
 				if (i % umbral == 0) {
@@ -416,8 +478,8 @@ public:
 				}
 			}
 			for (int i = rangoIni.X; i < rangoFin.X; i++) {
-				int umbral = 10000;
-				while (rangoFin.X - rangoIni.X < umbral + (umbral * 0.5f)) {
+				int umbral = 1000000;
+				while (rangoFin.X - rangoIni.X < umbral + (umbral * 0.8f)) {
 					umbral *= 0.1;
 				}
 				if (i % umbral == 0) {
@@ -430,22 +492,26 @@ public:
 		FontFamily^ fntFamily = gcnew FontFamily(L"Times New Roman");
 		System::Drawing::Font^ fntWrite = gcnew System::Drawing::Font(fntFamily, 10.00F, FontStyle::Regular);
 		int corrida = 6;
+		// unidad
 		for (int i = rangoIni.Y; i <= rangoFin.Y; i++) {
-			int umbral = 10000;
-			while (rangoFin.Y - rangoIni.Y < umbral + (umbral * 0.5f)) {
+			int umbral = 1000000;
+			while (rangoFin.Y - rangoIni.Y < umbral + (umbral * 0.8f)) {
 				umbral *= 0.1;
 			}
 			if (i % umbral == 0) {
-				graficador->DrawString(i.ToString(), fntWrite, Brushes::Black, getPixel(g,Point(rangoIni.X, i), 5, -15));
+				Grafica graficaActual = vecGraficas.at(g - 1);
+				System::String^ unidad = gcnew String(graficaActual.unidad);
+				graficador->DrawString(i.ToString()+unidad, fntWrite, Brushes::Black, getPixel(g,Point(rangoIni.X, i), 5, -15));
 			}
 		}
+		// tiempo
 		for (int i = rangoIni.X; i <= rangoFin.X; i++) {
-			int umbral = 10000;
-			while (rangoFin.X - rangoIni.X < umbral + (umbral * 0.5f)) {
+			int umbral = 1000000;
+			while (rangoFin.X - rangoIni.X < umbral + (umbral * 0.8f)) {
 				umbral *= 0.1;
 			}
 			if (i % umbral == 0) {
-				graficador->DrawString(i.ToString(), fntWrite, Brushes::Black, getPixel(g, Point(i, rangoIni.Y), 0, -10));
+				graficador->DrawString(i.ToString()+" s", fntWrite, Brushes::Black, getPixel(g, Point(i, rangoIni.Y), 0, -10));
 			}
 
 		}
@@ -463,89 +529,85 @@ public:
 
 		//printf("Draw %d,%d\n", entIniX, entFinX);
 
-		//for (int g = 1; g < vecGraficas.size()+1; g++) {
-			Grafica graficaActual = vecGraficas.at(g-1);
-			if (graficaActual.flagVisible) {
+		Grafica graficaActual = vecGraficas.at(g-1);
+		if (graficaActual.flagVisible) {
 				
 
 
-				if (flagBarras) {
-					SolidBrush^ myBrush = gcnew SolidBrush(obtenerColor(graficaActual.colorBar));
-					for (int i = 0; i < getTamVecMuestras(g); i++) {
-						Muestra muestraActual = getMuestra(g, i);
-						if ((entIniX <= muestraActual.time) && (muestraActual.time <= entFinX)) { // si esta en el rango X
-							if ((floIniY <= muestraActual.data) && (muestraActual.data <= floFinY)) { // si esta en el rango Y
-								PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
-								PointF posMuestraSombra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, rangoIni.Y), 0, gMargY);
-								graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y, tamMuestra, (int)posMuestraSombra.Y - (int)posMuestra.Y);
-							}
-							else if (floFinY < muestraActual.data) {
-								PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
-								PointF posMuestraSombra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, rangoIni.Y), 0, gMargY);
-								graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y, tamMuestra, (int)posMuestraSombra.Y - (int)posMuestra.Y);
-							}
+			if (flagBarras) {
+				SolidBrush^ myBrush = gcnew SolidBrush(obtenerColor(graficaActual.colorBar));
+				for (int i = 0; i < getTamVecMuestras(g); i++) {
+					Muestra muestraActual = getMuestra(g, i);
+					if ((entIniX <= muestraActual.time) && (muestraActual.time <= entFinX)) { // si esta en el rango X
+						if ((floIniY <= muestraActual.data) && (muestraActual.data <= floFinY)) { // si esta en el rango Y
+							PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
+							PointF posMuestraSombra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, rangoIni.Y), 0, gMargY);
+							graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y, tamMuestra, (int)posMuestraSombra.Y - (int)posMuestra.Y);
 						}
-					}
-
-					//printf("Draw\n");
-				}
-				if (flagLineas) {
-					PointF pixAnt(0, 0);
-					Muestra muestraAnterior;
-					bool flagPerteneceUlt = false;
-					for (int i = 0; i < getTamVecMuestras(g); i++) {
-
-						Muestra muestraAct = getMuestra(g, i);
-						PointF pixMuestraAct = getPixelDesdeGraficaF(g, PointF(muestraAct.time, muestraAct.data));
-
-						if (((entIniX - 1 <= muestraAct.time) && (muestraAct.time <= entFinX + 1)) // si esta en el rango X
-							&& ((floIniY <= muestraAct.data) && (muestraAct.data <= floFinY))) { // si esta en el rango Y
-								
-							if ((pixAnt.X != 0) || (pixAnt.Y != 0)) {
-								graficador->DrawLine(System::Drawing::Pens::Black, pixAnt, pixMuestraAct);
-							}
-
-							flagPerteneceUlt = true;
-						}
-						else {
-							if (flagPerteneceUlt) {
-								// dibujo linea con muestra posterior
-								graficador->DrawLine(System::Drawing::Pens::Black, pixAnt, pixMuestraAct);
-								//printf("	DrawLine2 %.2f %.2f %.2f %.2f\n", pixAnt.X, pixAnt.Y, pixMuestraAct.X, pixMuestraAct.Y);
-							}
-
-							flagPerteneceUlt = false;
-						}
-
-						muestraAnterior.time = muestraAct.time;
-						muestraAnterior.data = muestraAct.data;
-
-						pixAnt = getPixelDesdeGraficaF(g, PointF(muestraAnterior.time, muestraAnterior.data));
-					}
-				}
-				if (flagPuntos) {
-					SolidBrush^ myBrush = gcnew SolidBrush(obtenerColor(graficaActual.colorPun));
-					for (int i = 0; i < getTamVecMuestras(g); i++) {
-						Muestra muestraActual = getMuestra(g, i);
-						if ((entIniX <= muestraActual.time) && (muestraActual.time <= entFinX)) { // si esta en el rango X
-							if ((floIniY <= muestraActual.data) && (muestraActual.data <= floFinY)) { // si esta en el rango Y
-								PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
-								graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y - (tamMuestra / 2), tamMuestra, tamMuestra);
-
-							}
+						else if (floFinY < muestraActual.data) {
+							PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
+							PointF posMuestraSombra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, rangoIni.Y), 0, gMargY);
+							graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y, tamMuestra, (int)posMuestraSombra.Y - (int)posMuestra.Y);
 						}
 					}
 				}
 
-
-
+				//printf("Draw\n");
 			}
-		//}
+			if (flagLineas) {
+				PointF pixAnt(0, 0);
+				Muestra muestraAnterior;
+				bool flagPerteneceUlt = false;
+				for (int i = 0; i < getTamVecMuestras(g); i++) {
 
-		
+					Muestra muestraAct = getMuestra(g, i);
+					PointF pixMuestraAct = getPixelDesdeGraficaF(g, PointF(muestraAct.time, muestraAct.data));
 
-		if (selMuestro) {
-			graficador->DrawRectangle(System::Drawing::Pens::Black, selIni.X, selIni.Y, selFin.X - selIni.X, selFin.Y - selIni.Y);
+					if (((entIniX - 1 <= muestraAct.time) && (muestraAct.time <= entFinX + 1)) // si esta en el rango X
+						&& ((floIniY <= muestraAct.data) && (muestraAct.data <= floFinY))) { // si esta en el rango Y
+								
+						if ((pixAnt.X != 0) || (pixAnt.Y != 0)) {
+							graficador->DrawLine(System::Drawing::Pens::Black, pixAnt, pixMuestraAct);
+						}
+
+						flagPerteneceUlt = true;
+					}
+					else {
+						if (flagPerteneceUlt) {
+							// dibujo linea con muestra posterior
+							graficador->DrawLine(System::Drawing::Pens::Black, pixAnt, pixMuestraAct);
+							//printf("	DrawLine2 %.2f %.2f %.2f %.2f\n", pixAnt.X, pixAnt.Y, pixMuestraAct.X, pixMuestraAct.Y);
+						}
+
+						flagPerteneceUlt = false;
+					}
+
+					muestraAnterior.time = muestraAct.time;
+					muestraAnterior.data = muestraAct.data;
+
+					pixAnt = getPixelDesdeGraficaF(g, PointF(muestraAnterior.time, muestraAnterior.data));
+				}
+			}
+			if (flagPuntos) {
+				SolidBrush^ myBrush = gcnew SolidBrush(obtenerColor(graficaActual.colorPun));
+				for (int i = 0; i < getTamVecMuestras(g); i++) {
+					Muestra muestraActual = getMuestra(g, i);
+					if ((entIniX <= muestraActual.time) && (muestraActual.time <= entFinX)) { // si esta en el rango X
+						if ((floIniY <= muestraActual.data) && (muestraActual.data <= floFinY)) { // si esta en el rango Y
+							PointF posMuestra = getPixelDesdeGraficaF(g, PointF(muestraActual.time, muestraActual.data));
+							graficador->FillRectangle(myBrush, (int)posMuestra.X - (tamMuestra / 2), (int)posMuestra.Y - (tamMuestra / 2), tamMuestra, tamMuestra);
+
+						}
+					}
+				}
+			}
+
+
+
+		}		
+
+		if (graficaActual.flagSelMuestro) {
+			graficador->DrawRectangle(System::Drawing::Pens::Black, graficaActual.selIniX, graficaActual.selIniY, graficaActual.selFinX - graficaActual.selIniX, graficaActual.selFinY - graficaActual.selIniY);
 		}
 
 	}
@@ -565,10 +627,12 @@ public:
 	void setBarras(bool val) {
 		flagBarras = val;
 	}
-	void seleccionar(bool muestro, Point puntoA, Point puntoB) {
-		selMuestro = muestro;
-		selIni = puntoA;
-		selFin = puntoB;
+	void seleccionar(int grafica, bool muestro, Point puntoA, Point puntoB) {
+		vecGraficas[grafica].flagSelMuestro = muestro;
+		vecGraficas[grafica].selIniX = puntoA.X;
+		vecGraficas[grafica].selIniY = puntoA.Y;
+		vecGraficas[grafica].selFinX = puntoB.X;
+		vecGraficas[grafica].selFinY = puntoB.Y;
 	}
 	int getIdSensor(int grafica) {
 		return vecGraficas[grafica].idSensor; // este
@@ -628,6 +692,32 @@ public:
 
 	void setIdSen(int grafica, int nuevoId) {
 		vecGraficas[grafica].idSensor = nuevoId;
+		// ID: 0..9 (tipo de sensor)
+		switch (nuevoId) {
+		case S_Ninguno:
+			strcpy(vecGraficas[grafica].unidad, "");
+			break;
+		case S0_Temp_Termocupla:
+		case S1_Temp_Bmp:
+		case S3_Temp_OneWire:
+		case S8_Temp_BMP280:
+			strcpy(vecGraficas[grafica].unidad, " ºC");
+			break;
+		case S4_Temp_DHT:
+			strcpy(vecGraficas[grafica].unidad, " RH");
+			break;
+		case S2_Pres_Bmp:
+		case S9_Pres_BMP280:
+			strcpy(vecGraficas[grafica].unidad, " hPa");
+			break;
+		case S5_Hume_DHT:
+			strcpy(vecGraficas[grafica].unidad, " %");
+			break;
+		case S6_Pres_HX710:
+		case S7_Pres_HCSR04:
+			strcpy(vecGraficas[grafica].unidad, " U.A.");
+			break;
+		}
 	}
 	void setTipoMue(int grafica, int nuevoTipo) {
 		vecGraficas[grafica].tipoMue = nuevoTipo;
@@ -653,5 +743,27 @@ public:
 		printf("	Periodo %d\n", getPeriodo(grafica));
 
 	}
+	void getUnidad(int grafica, char* unidad) {
+		Grafica graficaActual = vecGraficas.at(grafica - 1);
+		strcpy(unidad, graficaActual.unidad);
+	}
+	int getEstadoGeneral() {
+		return estadoGeneral;
+	}
+	void setEstadoGeneral(int estGral) {
+		estadoGeneral = estGral;
+	}
+	void moverRangosX(int val) {
+		rangoIniG1.X += val;
+		rangoIniG2.X += val;
+		rangoFinG1.X += val;
+		rangoFinG2.X += val;
+	}
+	void moverRangosY(int val) {
+		rangoIniG1.Y += val;
+		rangoIniG2.Y += val;
+		rangoFinG1.Y += val;
+		rangoFinG2.Y += val;
+	} 
 };
 

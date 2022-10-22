@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2672C2978FB74A3B8665A2A9E86623E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_31B6B04C502A0F999A2059990682F55B"
         "OwnerKey" = "8:_19590A0F6ABD49ADAF76A1313B0A7309"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +41,18 @@
         {
         "MsmKey" = "8:_4E983CEC3131927636B950B069E2DBC1"
         "OwnerKey" = "8:_19590A0F6ABD49ADAF76A1313B0A7309"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6055B5D49FF547C7A3D242246084D1B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_79ED8A306EB94A0AAD2276A3582BE336"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,8 +75,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DBC456B1C4764B9BB68AC508EF3E4834"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E1E0D97FAD01B1D041F0C6F79E7F63C9"
         "OwnerKey" = "8:_19590A0F6ABD49ADAF76A1313B0A7309"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E75F83D5C8B842259676D36E364FCA46"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -92,6 +122,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -116,6 +154,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -150,6 +196,26 @@
             {
             "SourcePath" = "8:..\\ProjectForms\\chart-9_111418.ico"
             "TargetName" = "8:chart-9_111418.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2672C2978FB74A3B8665A2A9E86623E3"
+            {
+            "SourcePath" = "8:..\\ProjectForms\\Detener.png"
+            "TargetName" = "8:Detener.png"
             "Tag" = "8:"
             "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
             "Condition" = "8:"
@@ -204,6 +270,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6055B5D49FF547C7A3D242246084D1B7"
+            {
+            "SourcePath" = "8:..\\ProjectForms\\Comenzar.png"
+            "TargetName" = "8:Comenzar.png"
+            "Tag" = "8:"
+            "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_79ED8A306EB94A0AAD2276A3582BE336"
+            {
+            "SourcePath" = "8:..\\ProjectForms\\Limpiar.png"
+            "TargetName" = "8:Limpiar.png"
+            "Tag" = "8:"
+            "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BCE0605331C3B9BBE6ED73C1BC9C1BB"
@@ -266,6 +372,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBC456B1C4764B9BB68AC508EF3E4834"
+            {
+            "SourcePath" = "8:..\\ProjectForms\\Conexiones.png"
+            "TargetName" = "8:Conexiones.png"
+            "Tag" = "8:"
+            "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E1E0D97FAD01B1D041F0C6F79E7F63C9"
             {
             "SourcePath" = "8:api-ms-win-crt-runtime-l1-1-0.dll"
@@ -284,6 +410,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E75F83D5C8B842259676D36E364FCA46"
+            {
+            "SourcePath" = "8:..\\ProjectForms\\muestra.png"
+            "TargetName" = "8:muestra.png"
+            "Tag" = "8:"
+            "Folder" = "8:_72F9F9494A184829A557D77945FA9931"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -343,7 +489,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LibreLab"
         "ProductCode" = "8:{AFD1E9D4-FF06-4CA6-BDC7-E1862ADEC0BF}"
-        "PackageCode" = "8:{03D0922F-5491-477C-A1FD-3D12F876188F}"
+        "PackageCode" = "8:{66D31C91-D075-49F3-989F-F22EED113E21}"
         "UpgradeCode" = "8:{263E16DA-6065-4BCA-B7F5-A467DB5836E6}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -892,7 +1038,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_19590A0F6ABD49ADAF76A1313B0A7309"
             {
-            "SourcePath" = "8:..\\x64\\Release\\LibreLab1.2.exe"
+            "SourcePath" = "8:..\\x64\\Release\\LibreLab1.3.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_72F9F9494A184829A557D77945FA9931"

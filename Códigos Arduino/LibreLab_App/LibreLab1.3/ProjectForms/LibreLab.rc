@@ -47,9 +47,18 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Menu
+// PNG
 //
 
+IDB_PNG1                PNG                     "C:\\Users\\Len-Nico\\source\\repos\\LibreLab1.3\\ProjectForms\\Conexiones.png"
+
+IDB_PNG2                PNG                     "Comenzar.png"
+
+IDB_PNG3                PNG                     "Detener.png"
+
+IDB_PNG4                PNG                     "Limpiar.png"
+
+IDB_PNG5                PNG                     "muestra.png"
 
 #endif    // Español (España, alfabetización internacional) resources
 /////////////////////////////////////////////////////////////////////////////
