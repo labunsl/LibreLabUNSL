@@ -185,6 +185,13 @@
   <ItemGroup>
     <ResourceCompile Include="LibreLab.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Comenzar.png" />
+    <Image Include="Conexiones.png" />
+    <Image Include="Detener.png" />
+    <Image Include="Limpiar.png" />
+    <Image Include="muestra.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
