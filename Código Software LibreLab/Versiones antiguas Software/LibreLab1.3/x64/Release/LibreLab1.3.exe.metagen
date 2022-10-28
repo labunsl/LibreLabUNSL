@@ -1,0 +1,45 @@
+  ProjectForms.SubMenuArduino.resources - Embedded, ContainedInManifestFile, 
+  ProjectForms.SubMenuExportar.resources - Embedded, ContainedInManifestFile, 
+  ProjectForms.SubMenuTablas.resources - Embedded, ContainedInManifestFile, 
+  ProjectForms.VentanaPrincipal.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly LibreLab1.3, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class ProjectForms.SubMenuArduino: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    setArduino(Serial*): PrivateScope, Public, HideBySig
+    cargarSensores(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*): PrivateScope, Public, HideBySig
+    setEstadoPlanoXY(PlanoXY*): PrivateScope, Public, HideBySig
+Class ProjectForms.SubMenuExportar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    setPlanoXY(PlanoXY*): PrivateScope, Public, HideBySig
+Class ProjectForms.SubMenuTablas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    addNombre(String): PrivateScope, Public, HideBySig
+    addFila(Single, Single): PrivateScope, Public, HideBySig
+    importarRegistros(vector<float\,std::allocator<float> >*, vector<float\,std::allocator<float> >*): PrivateScope, Public, HideBySig
+Class ProjectForms.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    addFila(Int32, Single, Single): PrivateScope, Public, HideBySig

@@ -1,0 +1,17 @@
+C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\x64\Debug\ProjectForms.SubMenuArduino.resources
+C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\x64\Debug\ProjectForms.VentanaPrincipal.resources
+C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\x64\Debug\ProjectForms.vcxproj.GenerateResource.cache
+C:\Users\Len-Nico\source\repos\ProjectForms\ProjectForms\x64\Debug\ProjectForms.vcxproj.AssemblyReference.cache
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.SubMenuArduino.resources
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.VentanaPrincipal.resources
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.vcxproj.GenerateResource.cache
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.vcxproj.AssemblyReference.cache
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.SubMenuExportar.resources
+C:\Users\Len-Nico\source\repos\LibreLab\ProjectForms\x64\Debug\ProjectForms.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.vcxproj.AssemblyReference.cache
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.SubMenuArduino.resources
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.SubMenuExportar.resources
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.VentanaPrincipal.resources
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.vcxproj.GenerateResource.cache
+C:\Users\Len-Nico\source\repos\LibreLab1.1\ProjectForms\x64\Debug\ProjectForms.SubMenuTablas.resources
